@@ -1,4 +1,4 @@
-package models;
+package formats;
 
 public class User {
 	private String names;
