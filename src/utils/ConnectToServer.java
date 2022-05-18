@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import formats.RequestBody;
 import formats.ResponseBody;
-import models.User;
+import formats.User;
 
-public class ClientServerConnector {
+public class ConnectToServer {
 
-	public static ResponseBody serverClientConnnector(RequestBody clientRequest) throws Exception {
+	public static ResponseBody connectToServer(RequestBody clientRequest) throws Exception {
 		// establish a connection by providing host and port
 		ResponseBody res = new ResponseBody();
 		// number
@@ -63,7 +63,7 @@ public class ClientServerConnector {
 
 		ResponseBody responseBody;
 		try {
-			responseBody = serverClientConnnector(clientRequest);
+			responseBody = connectToServer(clientRequest);
 			System.out.println("Data: " + responseBody.getData());
 			System.out.println("Message: " + responseBody.getMessage());
 			System.out.println("Status: " + responseBody.getStatus());
