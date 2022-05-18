@@ -28,7 +28,11 @@ public class Gui extends JFrame implements ActionListener {
       usertextfield.setBounds(150,150,150,30);
       passwordField.setBounds(150,220,150,30);
       showpass.setBounds(150,250,150,30);
-      loginbutton.setBounds(50,300,100,30);
+      loginbutton.setBounds(100,300,100,30);
+      loginbutton.setSize(150,50);
+      loginbutton.setFont(new Font("Tahoma", Font.PLAIN, 26));
+      loginbutton.setForeground(Color.ORANGE);
+//        loginbutton.setBounds(545, 392, 162, 73);
       resetbutton.setBounds(200,300,100,30);
     }
     public void addComponentTocontainer(){
@@ -38,7 +42,7 @@ public class Gui extends JFrame implements ActionListener {
      container.add(passwordField);
      container.add(showpass);
      container.add(loginbutton);
-     container.add(resetbutton);
+//     container.add(resetbutton);
     }
     public void addActionEvent(){
         loginbutton.addActionListener(this);
@@ -55,6 +59,14 @@ public class Gui extends JFrame implements ActionListener {
         String pwdText;
         userText = usertextfield.getText();
         pwdText = passwordField.getText();
+        if(userText.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, "Email is required");
+            return;
+        }
+        if(pwdText.equalsIgnoreCase("")){
+            JOptionPane.showMessageDialog(this, "Password is required");
+            return;
+        }
         if (userText.equalsIgnoreCase("Neza") && pwdText.equalsIgnoreCase("bruce")) {
             JOptionPane.showMessageDialog(this, "Login Successfully");
         } else {
