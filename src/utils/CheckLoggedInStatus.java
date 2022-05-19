@@ -20,7 +20,7 @@ public class CheckLoggedInStatus {
 
     static {
         try {
-            fileReader = new FileReader("C:\\apps\\projects\\logisticsProject\\logdelUI\\config.properties");
+            fileReader = new FileReader("config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
