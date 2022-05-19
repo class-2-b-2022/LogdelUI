@@ -12,7 +12,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.util.Properties;
-public class Gui extends JFrame implements ActionListener {
+public class Login extends JFrame implements ActionListener {
     Container container=getContentPane();
     JLabel userlabel=new JLabel("Email");
     JLabel passlabel=new JLabel("Password");
