@@ -20,7 +20,7 @@ public class CheckLoggedInStatus {
 
     static {
         try {
-            fileReader = new FileReader("C:\\apps\\projects\\logisticsProject\\logdelUI\\config.properties");
+            fileReader = new FileReader("./config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -37,8 +37,8 @@ public class CheckLoggedInStatus {
     public static Boolean isLoggedIn() throws IOException {
         prop.load(fileReader);
         if(prop.getProperty("userId") == "" || prop.getProperty("userId") == null){
-            return false;
-        }
+             return false;
+         }
         return true;
     }
     public static User getLoggedInUser() throws Exception {
