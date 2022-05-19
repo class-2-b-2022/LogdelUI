@@ -79,4 +79,13 @@ public class SystemAdminDashboard extends JPanel {
         frame.setContentPane(new SystemAdminDashboard());
         frame.setVisible(true);
     }
+
+    public static void mainMethod() {
+        JFrame frame = new JFrame("System Admin | Dashboard");
+        frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
+        frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        frame.setBounds(0, 0, 1366, 768);
+        frame.setContentPane(new SystemAdminDashboard());
+        frame.setVisible(true);
+    }
 }
