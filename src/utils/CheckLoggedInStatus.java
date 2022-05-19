@@ -37,8 +37,8 @@ public class CheckLoggedInStatus {
     public static Boolean isLoggedIn() throws IOException {
         prop.load(fileReader);
         if(prop.getProperty("userId") == "" || prop.getProperty("userId") == null){
-            return false;
-        }
+             return false;
+         }
         return true;
     }
     public static User getLoggedInUser() throws Exception {

@@ -1,6 +1,8 @@
 package Views;
 
 import javax.swing.*;
+
+import pages.Inventory;
 import utils.Theme;
 import java.awt.*;
 
@@ -58,6 +60,7 @@ public class SystemAdminDashboard {
 
 //Display the window.
         frame.setBounds(0, 0, 1366, 768);
+//        Inventory inventory = new Inventory();
         frame.setVisible(true);
     }
 
