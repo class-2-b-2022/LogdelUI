@@ -24,6 +24,7 @@ public class Welcome implements ActionListener {
     JButton login = createButton("Login",null);
     JButton registerCompanyBtn = createButton("Register your company",new Color(0, 51, 102));
     public Welcome(){
+        login.addActionListener(this);
         frame.setBounds(300, 130, 700, 500);
         frame.setIconImage(headerIcon.getImage());
         container.setBounds(0, 50, 700, 500);
@@ -63,7 +64,9 @@ public class Welcome implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
       if(e.getSource() == login){
-          new Login();
+          System.out.println("do this");
+          frame.dispose();
+          new Login().mainMethod();
       }
     }
 }
