@@ -1,5 +1,6 @@
 package main;
 
+import pages.Billing;
 import pages.Dashboard;
 import pages.LoginPage;
 import pages.Welcome;
@@ -13,7 +14,8 @@ public class Main {
         if(CheckLoggedInStatus.isLoggedIn()){
             new Dashboard();
         }else{
-            new Welcome();
+//            new Welcome();
+            new Billing();
         }
 
     }

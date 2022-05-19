@@ -7,10 +7,7 @@ import org.json.JSONObject;
 import pages.Welcome;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class CheckLoggedInStatus {
@@ -20,7 +17,7 @@ public class CheckLoggedInStatus {
 
     static {
         try {
-            fileReader = new FileReader("C:\\apps\\projects\\logisticsProject\\logdelUI\\config.properties");
+            fileReader = new FileReader("C:\\Users\\uwamg\\Desktop\\projects\\logistics-MIS\\LogdelUI\\config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
