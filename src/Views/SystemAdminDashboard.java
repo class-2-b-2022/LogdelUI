@@ -61,7 +61,7 @@ public class SystemAdminDashboard {
         frame.setVisible(true);
     }
 
-    public static void main(String[] args) {
+    public static void mainMethod() {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 createAndShowGUI();
