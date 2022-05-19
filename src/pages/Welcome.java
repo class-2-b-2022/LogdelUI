@@ -1,5 +1,6 @@
 package pages;
 
+import Views.Login;
 import utils.Theme;
 
 import javax.swing.*;
@@ -61,6 +62,8 @@ public class Welcome implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+      if(e.getSource() == login){
+          new Login();
+      }
     }
 }
