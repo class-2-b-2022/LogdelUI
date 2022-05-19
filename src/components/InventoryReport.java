@@ -1,27 +1,55 @@
 package components;
 
-import javax.swing.*;
-import java.awt.*;
+import java.sql.Date;
 
-public class InventoryReport extends JFrame {
-    private Object[][] data;
-    Frame frame = new JFrame();
-    Integer tid;
+public class InventoryReport {
+    private Date date;
+    private String companyName;
+    private String status;
+    private String  product;
+    private Integer quantity;
 
-    public InventoryReport(Integer tid) throws HeadlessException{
-        this.tid = tid;
-        tid = 1;
-        this.setVisible(true);
-        this.setBackground(Color.lightGray);
-
-        JLabel label = new JLabel("Transaction #"+tid+" ",JLabel.CENTER);
-        label.setAlignmentX(Component.CENTER_ALIGNMENT);
-        label.setBounds(0,20,500,100);
-        label.setFont(new Font("Arial",Font.BOLD,18));
-        label.setForeground(Color.CYAN);
-
+    public Date getDate() {
+        return date;
     }
-    public static void main(String[] args){
-        InventoryReport report = new InventoryReport(2);
+
+    public Date setDate(Date date) {
+        this.date = date;
+        return date;
     }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+
+    public String getStatus(String status) {
+        return this.status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getProduct(Integer productName) {
+        return product;
+    }
+
+    public void setProduct(String product) {
+        this.product = product;
+    }
+
+    public Integer getQuantity(int quantity) {
+        return this.quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+
+
 }
