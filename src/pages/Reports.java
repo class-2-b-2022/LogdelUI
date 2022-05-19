@@ -11,10 +11,8 @@ public class Reports extends JFrame implements ActionListener {
     Frame frame = new JFrame();
     JPanel container = new JPanel();
     Theme theme = new Theme();
-    JLabel title = new JLabel("REPORTS MODULE");
-    JButton option = createButton("Choose reports to view", new Color(0,51,102));
-    JButton choice1 = createButton("Company Management Reports",new Color(0, 51, 102));
-    JButton choice2 = createButton("Inventory Management Reports",new Color(0, 51, 102));
+    JLabel title = new JLabel("INVENTORY REPORTS MODULE");
+    JPanel content = new JPanel();
 
     public Reports(){
         frame.setBounds(300, 130, 700, 500);
@@ -23,7 +21,11 @@ public class Reports extends JFrame implements ActionListener {
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setForeground(theme.getPrimary());
         title.setFont(new Font("Arial", Font.BOLD, 20));
+        title.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+        content.setLayout(new GridLayout(2,1));
+        content.setBackground(Color.lightGray);
         container.add(title);
+        container.add(content);
 
         container.setBackground(theme.getSecondary());
         frame.add(container);
@@ -31,15 +33,6 @@ public class Reports extends JFrame implements ActionListener {
         frame.setVisible(true);
     }
 
-
-    public JButton createButton(String text, Color color){
-        JButton button = new JButton(text);
-        button.setForeground(color!=null ? color: Color.white);
-        button.setBorder(BorderFactory.createEmptyBorder(5, 20, 10, 20));
-        button.setBackground(theme.getPrimary());
-        button.setFocusable(false);
-        return button;
-    }
     @Override
     public void actionPerformed(ActionEvent e) {
 

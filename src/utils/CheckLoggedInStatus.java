@@ -23,8 +23,6 @@ public class CheckLoggedInStatus {
             fileReader = new FileReader("config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
