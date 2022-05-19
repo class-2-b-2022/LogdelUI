@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) throws IOException {
 //        if(CheckLoggedInStatus.isLoggedIn()){
-            SystemAdminDashboard.mainMethod();
+        SystemAdminDashboard.DashboardMain();
 //        }else{
 //            new Welcome();
 //        }
