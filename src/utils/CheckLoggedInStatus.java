@@ -17,7 +17,7 @@ public class CheckLoggedInStatus {
 
     static {
         try {
-            fileReader = new FileReader("C:\\Users\\uwamg\\Desktop\\projects\\logistics-MIS\\LogdelUI\\config.properties");
+            fileReader = new FileReader("C:\\Users\\user\\OneDrive\\Documents\\projects\\Logistics-java-project\\logdel-ui\\LogdelUI\\config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

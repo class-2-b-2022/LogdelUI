@@ -12,11 +12,6 @@ public class Table extends JFrame {
     private Object[] columns;
     public static CardLayout card = new CardLayout(40, 30);
 
-//    public Table() {
-//
-//        new Table();
-//    }
-
     public Table(String title, Object[][] data, Object[] columns) throws HeadlessException {
         this.title = title;
         this.data = data;
@@ -37,6 +32,8 @@ public class Table extends JFrame {
         DefaultTableModel model = new DefaultTableModel(this.data, this.columns);
         model.setColumnIdentifiers(columns);
 
+        this.setBounds(10,10,900,500);
+
         JTable table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
@@ -49,6 +46,7 @@ public class Table extends JFrame {
         table.getTableHeader().setOpaque(false);
         table.setShowGrid(false);
 
+        table.setAutoCreateRowSorter(true);
         table.getTableHeader().setReorderingAllowed(false);
         Color color = new Color(112,0,0);
         table.getTableHeader().setBackground(color);
