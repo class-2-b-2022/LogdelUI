@@ -21,7 +21,7 @@ public class Login extends JFrame implements ActionListener {
     JButton loginbutton=new JButton("Login");
     JButton resetbutton=new JButton("Reset");
     JCheckBox showpass=new JCheckBox("Show Password");
-    Gui() {
+    Login() {
         setLayoutManager();
         setLocationAndSize();
         addComponentTocontainer();
@@ -105,7 +105,7 @@ public class Login extends JFrame implements ActionListener {
                 properties.setProperty("userId",userid);
                 properties.store(fileWriter,"Loggedin User");
                 System.lineSeparator().repeat(100);
-                Gui frame=new Gui();
+                Login frame=new Login();
                 frame.setTitle("Dashboard");
                 frame.setVisible(true);
             }else {
@@ -128,7 +128,7 @@ public class Login extends JFrame implements ActionListener {
     }
     }
     public static void main(String[] args) {
-        Gui frame=new Gui();
+        Login frame=new Login();
         frame.setTitle("Welcome back to Logdel");
         frame.setVisible(true);
         frame.setBounds(10,10,370,600);
