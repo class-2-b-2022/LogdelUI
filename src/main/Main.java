@@ -1,6 +1,6 @@
 package main;
 
-import pages.Billing;
+import Views.SystemAdminDashboard;
 import pages.Dashboard;
 import pages.LoginPage;
 import pages.Welcome;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 public class Main {
     public static void main(String[] args) throws IOException {
         if(CheckLoggedInStatus.isLoggedIn()){
-            new Dashboard();
+            SystemAdminDashboard.mainMethod();
         }else{
 //            new Welcome();
 
