@@ -62,7 +62,7 @@ public class CheckLoggedInStatus {
     }
     public static void logout() throws Exception{
         try {
-            fileWriter = new FileWriter("C:\\apps\\projects\\logisticsProject\\logdelUI\\config.properties");
+            fileWriter = new FileWriter("config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
