@@ -2,9 +2,9 @@ package Views;
 
 import javax.swing.*;
 import java.awt.*;
+import utils.Theme;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 
 /**
@@ -18,7 +18,7 @@ public class SystemAdminDashboard extends Frame {
     private Panel userContent = new Panel();
 
     SystemAdminDashboard() {
-        ImageIcon img = new ImageIcon("/src/images/icon.png");
+        ImageIcon img = new ImageIcon("/assets/log2.png");
         setIconImage(img.getImage());
         addWindowListener(new WindowAdapter() {
             @Override
@@ -26,14 +26,15 @@ public class SystemAdminDashboard extends Frame {
                 dispose();
             }
         });
-        sidebar.setBackground(new Color(94, 3, 3, 1));
+        sidebar.setBackground(new Color(0, 51, 204));
+        sidebar.setSize(200, 60);
         add(sidebar);
         appTitle.setText("LODGEL APP");
         appTitle.setForeground(Color.white);
         appTitle.setBounds(50, 50, 300, 40);
         appTitle.setFont(new Font("Arial", Font.BOLD, 16));
         navbar.setLayout(new GridLayout(1,2));
-        navbar.setBackground(new Color(112, 0, 0, 1));
+        navbar.setBackground(new Theme().getPrimary());
         navbar.add(appTitle);
         rightHandSide.setLayout(new GridLayout(7, 1));
         rightHandSide.setBackground(Color.WHITE);
