@@ -1,9 +1,17 @@
 package Views;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import data_format.Data_format;
+import formats.RequestBody;
+import formats.ResponseBody;
+import org.json.JSONObject;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.util.Properties;
+import java.util.Scanner;
 public class Gui extends JFrame implements ActionListener {
     Container container=getContentPane();
     JLabel userlabel=new JLabel("Email");
@@ -54,11 +62,15 @@ public class Gui extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-    if(e.getSource() == loginbutton) {
-        String userText;
-        String pwdText;
-        userText = usertextfield.getText();
-        pwdText = passwordField.getText();
+        if(e.getSource() == loginbutton) {
+            String userText="neza@gmail.com";
+            String pwdText="pws12";
+//            String userText="";
+//            String pwdText="";
+//        userText = usertextfield.getText();
+//        pwdText = passwordField.getText();
+//            Scanner scanner=new Scanner(System.in);
+//            scanner.nextLine();
         if(userText.equalsIgnoreCase("")){
             JOptionPane.showMessageDialog(this, "Email is required");
             return;
@@ -67,10 +79,37 @@ public class Gui extends JFrame implements ActionListener {
             JOptionPane.showMessageDialog(this, "Password is required");
             return;
         }
-        if (userText.equalsIgnoreCase("Neza") && pwdText.equalsIgnoreCase("bruce")) {
-            JOptionPane.showMessageDialog(this, "Login Successfully");
-        } else {
-            JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+        JSONObject jsonHolder = new JSONObject();
+        ObjectMapper objectMapper = new ObjectMapper();
+        Data_format dataFormat=new Data_format();
+        dataFormat.setEmail("neza@gmail.com");
+        dataFormat.setPassword("pwd");
+        RequestBody requestBody=new RequestBody();
+        requestBody.setAction("login");
+        requestBody.setRoute("/users");
+        requestBody.setData(dataFormat);
+        LoginHelper loginHelper=new LoginHelper();
+        ResponseBody responseBody= null;
+        try {
+            System.out.println(userText.toString());
+            responseBody = loginHelper.login(requestBody);
+            if(Integer.parseInt(responseBody.getStatus()) == 200){
+                System.out.println("Loggedin Successfully");
+                Properties properties=new Properties();
+                FileWriter fileWriter=new FileWriter("C:\\apps\\projects\\logisticsProject\\logistics-client\\config.properties");
+                jsonHolder=new JSONObject(responseBody.getData().toString());
+                String userid=jsonHolder.getString("userId").toString();
+                properties.setProperty("userId",userid);
+                properties.store(fileWriter,"Loggedin User");
+                System.lineSeparator().repeat(100);
+                Gui frame=new Gui();
+                frame.setTitle("Dashboard");
+                frame.setVisible(true);
+            }else {
+                JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+            }
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
     if(e.getSource() == resetbutton){
@@ -84,5 +123,16 @@ public class Gui extends JFrame implements ActionListener {
             passwordField.setEchoChar('*');
         }
     }
+    }
+    public static void main(String[] args) {
+        Gui frame=new Gui();
+        frame.setTitle("Welcome back to Logdel");
+        frame.setVisible(true);
+        frame.setBounds(10,10,370,600);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
+//        if (userText.equalsIgnoreCase("Neza") && pwdText.equalsIgnoreCase("bruce")) {
+//            JOptionPane.showMessageDialog(this, "Login Successfully loading...try agin letter ");
+//        }
     }
     }
