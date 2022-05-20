@@ -1,12 +1,10 @@
 package pages;
 
-import components.Table;
 import formats.ProductModel;
 import formats.RequestBody;
 import formats.ResponseBody;
 import models.InventoryModel;
 import services.InventoryService;
-import utils.ConnectToServer;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -15,7 +13,6 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Inventory {

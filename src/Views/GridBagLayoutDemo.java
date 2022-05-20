@@ -28,7 +28,7 @@ public class GridBagLayoutDemo extends Frame {
         });
         sidebar.setBackground(new Color(94, 3, 3, 1));
         add(sidebar);
-        appTitle.setText("LODGEL APP");
+        appTitle.setText("LOGDEL APP");
         appTitle.setForeground(Color.white);
         appTitle.setBounds(50, 50, 300, 40);
         appTitle.setFont(new Font("Arial", Font.BOLD, 16));

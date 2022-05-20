@@ -61,8 +61,8 @@ public class ConnectToServer {
 		User user = new User();
 		user.setNames("test1");
 		user.setPhone(781253647);
-		user.setEmail("test1@gmail.com");
-		user.setPassword("qwerty");
+		user.setEmail("rdev@gmail.com");
+		user.setPassword("nicemonn");
 		user.setRole(1);
 
 		RequestBody clientRequest = new RequestBody();
