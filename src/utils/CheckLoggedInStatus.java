@@ -7,10 +7,7 @@ import org.json.JSONObject;
 import pages.Welcome;
 
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.Properties;
 
 public class CheckLoggedInStatus {
@@ -37,8 +34,8 @@ public class CheckLoggedInStatus {
     public static Boolean isLoggedIn() throws IOException {
         prop.load(fileReader);
         if(prop.getProperty("userId") == "" || prop.getProperty("userId") == null){
-            return false;
-        }
+             return false;
+         }
         return true;
     }
     public static User getLoggedInUser() throws Exception {
@@ -62,7 +59,11 @@ public class CheckLoggedInStatus {
     }
     public static void logout() throws Exception{
         try {
+<<<<<<< HEAD
             fileWriter = new FileWriter("C:\\Users\\allie\\OneDrive\\Documents\\Java_P\\LogdelUI\\config.properties");
+=======
+            fileWriter = new FileWriter("config.properties");
+>>>>>>> a8fd432ec2093262725dedf23092c3c4942a5192
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
