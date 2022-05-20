@@ -37,7 +37,7 @@ public class Register extends JFrame implements ActionListener {
     JButton register = new JButton("Register");
     JButton resetbutton = new JButton("Reset");
 
-    Register() {
+    public Register() {
         setLayoutManager();
         setLocationAndSize();
         addComponentTocontainer();
@@ -173,12 +173,12 @@ public class Register extends JFrame implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        Register frame = new Register();
-        frame.setTitle("Welcome back to Logdel");
-        frame.setVisible(true);
-        frame.setBounds(10, 10, 370, 600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+    public static void mainMethod() {
+        Register framed=new Register();
+        framed.setTitle("Welcome back to Logdel");
+        framed.setVisible(true);
+        framed.setBounds(10,10,370,600);
+        framed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framed.setResizable(false);
     }
 }

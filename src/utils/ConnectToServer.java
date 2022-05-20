@@ -14,12 +14,21 @@ import formats.ResponseBody;
 import formats.User;
 
 public class ConnectToServer {
+	public static String removeLastCharacter(String str)
+	{
 
+		// Removing first and last character
+		// of a string using substring() method
+		str = str.substring(0, str.length() - 1);
+
+		// Return the modified string
+		return str;
+	}
 	public static ResponseBody connectToServer(RequestBody clientRequest) throws Exception {
 		// establish a connection by providing host and port
 		ResponseBody res = new ResponseBody();
 		// number
-		try (Socket socket = new Socket("localhost", 5450)) {
+		try (Socket socket = new Socket("192.168.1.190", 5450)) {
 
 			// writing to server
 			ObjectOutputStream requestStream = new ObjectOutputStream(socket.getOutputStream());
@@ -40,7 +49,7 @@ public class ConnectToServer {
 			JsonNode jsonNodeRoot = inputMapper.readTree(jsonReturned);
 			jsonNodeRoot = inputMapper.readTree(jsonReturned);
 			res.setMessage(jsonNodeRoot.get("message").asText());
-			res.setData(jsonReturned.split("data\":")[1].split(",\"message\"")[0]);
+			res.setData(ConnectToServer.removeLastCharacter(jsonReturned.split("data\":")[1].split(",\"message\"")[0]));
 			res.setStatus((jsonNodeRoot.get("status").asText()));
 		} catch (IOException e) {
 			e.printStackTrace();
