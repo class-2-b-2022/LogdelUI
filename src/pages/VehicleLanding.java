@@ -11,12 +11,13 @@ public class VehicleLanding extends JFrame {
     public VehicleLanding(){
         this.setVisible(true);
         this.setTitle("Vehicle Management Module");
+        this.setBounds(10,10,1000,500);
 
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container,BoxLayout.Y_AXIS));
 
         JLabel label = new JLabel("WELCOME TO VEHICLE MANAGEMENT SYSTEM");
-        label.setForeground(theme.getRedForeground());
+        label.setForeground(theme.getSideBarColor());
         label.setFont(new Font("ARIAL",Font.BOLD,20));
         label.setAlignmentX(CENTER_ALIGNMENT);
 
@@ -36,7 +37,7 @@ public class VehicleLanding extends JFrame {
 
     private void createButton(String label,Theme theme,String value,JPanel container,Dimension maximumSize){
         JButton btn = new JButton(label);
-        btn.setBackground(theme.getRedForeground());
+        btn.setBackground(theme.getSideBarColor());
         btn.setForeground(Color.WHITE);
         btn.setBorder(BorderFactory.createEtchedBorder(0));
         btn.setFont(new Font("Arial",Font.BOLD,17));

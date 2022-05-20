@@ -8,7 +8,6 @@ import java.awt.*;
 
 public class SystemAdminDashboard extends JPanel {
     GridBagConstraints constraints = new GridBagConstraints();
-
     public SystemAdminDashboard() {
         setLayout(new GridBagLayout());
         constraints.weightx = 1.0;
@@ -23,27 +22,27 @@ public class SystemAdminDashboard extends JPanel {
         addGB(new DashboardNavbar().returnNavbar("LOGDEL Admin"),   x = 1, y = 0, 0.8);
 
         Panel contentHolder = new Panel();
-        contentHolder.setBackground(new Color(0x303057));
+        contentHolder.setBackground(Color.WHITE);
         addGB(contentHolder, x=1, y=1, 0.8);
 
         Panel contentHolder1 = new Panel();
-        contentHolder1.setBackground(new Color(0x303057));
+        contentHolder1.setBackground(Color.WHITE);
         addGB(contentHolder1, x=1, y=2, 0.8);
 
         Panel contentHolder2 = new Panel();
-        contentHolder2.setBackground(new Color(0x303057));
+        contentHolder2.setBackground(Color.WHITE);
         addGB(contentHolder2, x=1, y=3, 0.8);
 
         Panel contentHolder3 = new Panel();
-        contentHolder3.setBackground(new Color(0x303057));
+        contentHolder3.setBackground(Color.WHITE);
         addGB(contentHolder3, x=1, y=4, 0.8);
 
         Panel contentHolder4 = new Panel();
-        contentHolder4.setBackground(new Color(0x303057));
+        contentHolder4.setBackground(Color.WHITE);
         addGB(contentHolder4, x=1, y=5, 0.8);
 
         Panel contentHolder5 = new Panel();
-        contentHolder5.setBackground(new Color(0x303057));
+        contentHolder5.setBackground(Color.WHITE);
         addGB(contentHolder5, x=1, y=6, 0.8);
 
 //        constraints.gridwidth = 2; // span two columns
@@ -61,7 +60,7 @@ public class SystemAdminDashboard extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("System Admin | Dashboard");
-        frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
+        frame.setIconImage((new ImageIcon("C:\\Users\\user\\OneDrive\\Documents\\projects\\Logistics-java-project\\logdel-ui\\LogdelUI\\assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.setBounds(0, 0, 1366, 768);
         frame.setContentPane(new SystemAdminDashboard());
@@ -70,7 +69,7 @@ public class SystemAdminDashboard extends JPanel {
 
     public static void mainMethod() {
         JFrame frame = new JFrame("System Admin | Dashboard");
-        frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
+        frame.setIconImage((new ImageIcon("C:\\Users\\user\\OneDrive\\Documents\\projects\\Logistics-java-project\\logdel-ui\\LogdelUI\\assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.setBounds(0, 0, 1366, 768);
         frame.setContentPane(new SystemAdminDashboard());
