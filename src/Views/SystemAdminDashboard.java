@@ -8,6 +8,7 @@ import java.awt.*;
 
 public class SystemAdminDashboard extends JPanel {
     GridBagConstraints constraints = new GridBagConstraints();
+    private Panel sidebar = new DashboardSidebar().returnSidebar();
 
     public SystemAdminDashboard() {
         setLayout(new GridBagLayout());
@@ -17,13 +18,14 @@ public class SystemAdminDashboard extends JPanel {
         int x, y;  // for clarity
         constraints.gridheight = 7; // span two rows
 
-        addGB(new DashboardSidebar().returnSidebar(),   x = 0, y = 0, 0.1);
+        addGB(sidebar,   x = 0, y = 0, 0.1);
         constraints.gridheight = 1; // set it back
 
-        addGB(new DashboardNavbar().returnNavbar("LOGDEL Admin"),   x = 1, y = 0, 0.8);
+        addGB(new DashboardNavbar().returnNavbar("LOGDEL System Admin", "Yves Isite"),   x = 1, y = 0, 0.8);
 
-        Panel contentHolder = new Panel();
-        contentHolder.setBackground(new Color(0x303057));
+        Label contentHolder = new Label("30 Items in stock");
+        contentHolder.setBackground(new Color(16, 33, 90));
+        contentHolder.setForeground(Color.white);
         addGB(contentHolder, x=1, y=1, 0.8);
 
         Panel contentHolder1 = new Panel();
@@ -45,6 +47,14 @@ public class SystemAdminDashboard extends JPanel {
         Panel contentHolder5 = new Panel();
         contentHolder5.setBackground(new Color(0x303057));
         addGB(contentHolder5, x=1, y=6, 0.8);
+
+        Panel contentHolder6 = new Panel();
+        contentHolder6.setBackground(new Color(0x303057));
+        addGB(contentHolder6, x=1, y=7, 0.8);
+
+        Panel contentHolder7 = new Panel();
+        contentHolder7.setBackground(new Color(0x303057));
+        addGB(contentHolder7, x=1, y=8, 0.8);
 
 //        constraints.gridwidth = 2; // span two columns
 //        addGB(new JButton("four"),  x = 1, y = 1, 1.0);

@@ -5,23 +5,32 @@ import java.awt.*;
 
 public class DashboardNavbar {
     private Panel navbar=new Panel();
-    public Panel returnNavbar(String title) {
-        Label appTitle = new Label();
-        appTitle.setText(title);
+    public Panel returnNavbar(String title,String adminName) {
+        Label appTitle = new Label(title, Label.CENTER);
         appTitle.setForeground(Color.white);
-        appTitle.setBounds(0, 0, 300, 40);
+        appTitle.setBounds(0, 0, 600, 40);
         appTitle.setFont(new Font("Arial", Font.BOLD, 18));
 
-        navbar.setBackground(new Color(000033));
+        navbar.setBackground(new Color(0x0B0B2D));
         navbar.setLayout(new GridLayout(1, 2));
         navbar.add(appTitle);
 
+        Panel prof=new Panel();
+        prof.setLayout(new GridLayout(1, 2));
+
+        Label name = new Label(adminName);
+        name.setForeground(Color.white);
+        name.setBounds(0, 0, 600, 40);
+        name.setFont(new Font("Arial", Font.BOLD, 18));
+
         JLabel la6=new JLabel();
         Panel profile = new Panel();
-        profile.setLayout(new FlowLayout(FlowLayout.RIGHT));
         la6.setIcon(new ImageIcon("assets\\profile.png"));// your image here
-        profile.add(la6);
-        navbar.add(profile);
+        
+        prof.add(la6);
+        prof.add(name);
+
+        navbar.add(prof);
         return navbar;
     }
 }
