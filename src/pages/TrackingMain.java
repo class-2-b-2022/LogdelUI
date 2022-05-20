@@ -1,21 +1,23 @@
 package pages;
 
-import handlers.VehicleManagementHandler;
+
+import handlers.TrackingHandler;
+
 import utils.Theme;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class VehicleLanding extends JFrame {
-    private Theme theme = new Theme();
-    public VehicleLanding(){
+public class TrackingMain extends JFrame {
+    private final Theme theme = new Theme();
+    public TrackingMain(){
         this.setVisible(true);
-        this.setTitle("Vehicle Management Module");
-
+        this.setTitle("Tracking Management Module");
+        this.setBounds(12,12,400,500);
         JPanel container = new JPanel();
         container.setLayout(new BoxLayout(container,BoxLayout.Y_AXIS));
 
-        JLabel label = new JLabel("WELCOME TO VEHICLE MANAGEMENT SYSTEM");
+        JLabel label = new JLabel("WELCOME TO TRACKING MANAGEMENT SYSTEM");
         label.setForeground(theme.getRedForeground());
         label.setFont(new Font("ARIAL",Font.BOLD,20));
         label.setAlignmentX(CENTER_ALIGNMENT);
@@ -25,9 +27,8 @@ public class VehicleLanding extends JFrame {
 
         container.add(label);
 
-        createButton("View Vehicles",theme,"view_vehicles",container,maximumSize);
-        createButton("Add Vehicle",theme,"add_vehicle",container,maximumSize);
-        createButton("Tracking",theme,"tracking",container,maximumSize);
+        createButton("View En-route Vehicles",theme,"view_outgoing",container,maximumSize);
+        createButton("Add Leaving Vehicles",theme,"add_outgoing",container,maximumSize);
 
 
 
@@ -41,10 +42,9 @@ public class VehicleLanding extends JFrame {
         btn.setBorder(BorderFactory.createEtchedBorder(0));
         btn.setFont(new Font("Arial",Font.BOLD,17));
         btn.setActionCommand(value);
-        btn.addActionListener(new VehicleManagementHandler());
+        btn.addActionListener(new TrackingHandler());
 
         btn.setMaximumSize(maximumSize);
-
         container.add(btn);
 
 

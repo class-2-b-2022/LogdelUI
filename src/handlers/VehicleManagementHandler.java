@@ -1,6 +1,7 @@
 package handlers;
 
 import components.Table;
+import pages.TrackingMain;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,6 +44,10 @@ public class VehicleManagementHandler implements ActionListener {
             };
             Object [] columns = {"Id", "Model", "Plate number","Brand","Description"};
             new Table("Vehicles",data,columns);
+        }
+
+        if(e.getActionCommand().equals("tracking")){
+              new TrackingMain();
         }
     }
 }
