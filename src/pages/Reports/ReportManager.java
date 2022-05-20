@@ -1,6 +1,5 @@
 package pages.Reports;
 
-import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import components.InventoryReport;
 import formats.RequestBody;
@@ -43,8 +42,6 @@ public class ReportManager {
             String line = String.format("    %s    |   %s   | %s  | %s  | %s ",date,company,product,status,quantity);
             System.out.format(leftAlignFormat, line,2,3);
         }
-
-
         return inventoryReports;
     }
 }

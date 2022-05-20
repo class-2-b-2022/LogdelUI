@@ -3,6 +3,7 @@ package pages.Reports;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import components.InventoryReport;
+import components.Table;
 import formats.RequestBody;
 import formats.ResponseBody;
 import utils.Theme;
@@ -20,7 +21,6 @@ public class Reports extends JFrame implements ActionListener {
     JPanel heading = new JPanel();
     Theme theme = new Theme();
     JLabel title = new JLabel("REPORTS MODULE");
-    JPanel content = new JPanel();
 
     JPanel date_panel = new JPanel();
     JPanel product_panel = new JPanel();
@@ -53,7 +53,11 @@ public class Reports extends JFrame implements ActionListener {
         container.setBounds(0, 50, 700, 500);
 
         int i=1;
+//        Object [] columns = {"Date", "Product", "Status", "Quantity","Company Name"};
+        int rows= 12;
+        int columns = 5;
         for ( InventoryReport reportModel: reportModels) {
+            JPanel content = new JPanel();
             JLabel date_content = new JLabel(String.valueOf(reportModel.getDate()));
             JLabel product_content = new JLabel(String.valueOf(reportModel.getProduct()));
             JLabel status_content = new JLabel(String.valueOf(reportModel.getStatus()));
@@ -69,7 +73,35 @@ public class Reports extends JFrame implements ActionListener {
             quantity_panel.add(quantity_content);
             company_panel.add(company);
             company_panel.add(company_content);
-            i++;
+
+            content.setLayout(new GridLayout(7,1));
+            content.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
+            container.add(heading);
+            content.add(date_panel);
+            content.add(product_panel);
+            content.add(status_panel);
+            content.add(quantity_panel);
+            content.add(company_panel);
+
+            container.add(content);
+            Object[][] data= null;
+
+//            Object [][] data = null;
+//
+//            for( Integer y=0; y<rows; y++ ) {
+//                myArray.push( [] );
+//            }
+//            for (var i = 0; i < rows; i++)
+//            {
+//                for (var j =  myArray[i].length; j < cols; j++)
+//                {
+//                    myArray[i].push(0);
+//                }
+//            }
+//            i++;
+//            Object [] columns = {"walletId", "Type", "Amount", "Date","Received From","Payed To"};
+
+//            new Table("Inventory",data,columns);
         }
 
         title.setHorizontalAlignment(SwingConstants.CENTER);
@@ -82,16 +114,7 @@ public class Reports extends JFrame implements ActionListener {
         heading.setLayout(new GridLayout(1,1));
         heading.add(title);
 
-        content.setLayout(new GridLayout(7,1));
-        content.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
-        container.add(heading);
-        content.add(date_panel);
-        content.add(product_panel);
-        content.add(status_panel);
-        content.add(quantity_panel);
-        content.add(company_panel);
 
-        container.add(content);
         container.setBackground(Color.white);
         frame.add(container);
         frame.setResizable(false);
