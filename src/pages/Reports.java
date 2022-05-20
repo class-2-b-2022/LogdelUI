@@ -37,7 +37,6 @@ public class Reports extends JFrame implements ActionListener {
     Object [][] data = {{1, "2022-06-05","Fanta","IN","10","BRALIRWA"} ,{2, "2022-06-05","AKARABO","IN","10","NYIRANGARAMA"} ,{3, "2022-06-05","TIPI SUPA","IN","10","SULFO"} };
 
     public Reports(){
-        this.setLayout(new GridLayout(7,1));
         frame.setBounds(300, 130, 700, 500);
         container.setBounds(0, 50, 700, 500);
 
@@ -45,12 +44,6 @@ public class Reports extends JFrame implements ActionListener {
         title.setForeground(theme.getPrimary());
         title.setFont(new Font("Arial", Font.BOLD, 20));
         title.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
-        title.setLayout(new GridLayout(1,5));
-
-        date_panel.setLayout(layout);
-
-        content.setLayout(new GridLayout(2,1));
-        content.setBackground(Color.lightGray);
         date.setHorizontalAlignment(SwingConstants.CENTER);
 
         date_panel.add(date);
@@ -64,10 +57,14 @@ public class Reports extends JFrame implements ActionListener {
         company_panel.add(company);
         company_panel.add(company_content);
 
-
+//        title.setLayout(new GridLayout(1,5));
+//        date_panel.setLayout(new GridLayout(1,5));
+//        product_panel.setLayout(new GridLayout(1,5));
+//        status_panel.setLayout(new GridLayout(1,5));
+//        quantity_panel.setLayout(new GridLayout(1,5));
+        container.setLayout(new GridLayout(7,1));
         container.add(title);
         container.add(date_panel);
-        container.add(content);
         container.add(product_panel);
         container.add(status_panel);
         container.add(quantity_panel);
