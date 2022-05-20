@@ -1,6 +1,7 @@
 package Views;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import components.Table;
 import data_format.Data_format;
 import formats.RequestBody;
 import formats.ResponseBody;
@@ -111,24 +112,27 @@ public class Register extends JFrame implements ActionListener {
         if (e.getSource() == register) {
             String userText = "";
             String pwdText = "";
-//            String userText="";
+            //            String userText="";
             //rdev@gmail.com
             //nicemonn
             //
-//            String pwdText="";
-//            userText = usertextfield.getText();
-//            pwdText = passwordField.getText();
-//            Scanner scanner=new Scanner(System.in);
-//            scanner.nextLine();
-//            if (userText.equalsIgnoreCase("")) {
-//                JOptionPane.showMessageDialog(this, "name is required");
-//                return;
-//            }
-//            if (pwdText.equalsIgnoreCase("")) {
-//                JOptionPane.showMessageDialog(this, "Password is required");
-//                return;
-//            }
-            JSONObject jsonHolder = new JSONObject();
+            //            String pwdText="";
+            //            userText = usertextfield.getText();
+            //            pwdText = passwordField.getText();
+            //            Scanner scanner=new Scanner(System.in);
+            //            scanner.nextLine();
+            //            if (userText.equalsIgnoreCase("")) {
+            //                JOptionPane.showMessageDialog(this, "name is required");
+            //                return;
+            //            }
+            //            if (pwdText.equalsIgnoreCase("")) {
+            //                JOptionPane.showMessageDialog(this, "Password is required");
+            //                return;
+            //            }
+            Object[][] data = {{1, "Prince", "Nyabihu", "Kigali", "Rubavu", 12, "Musanze"}, {2, "Prince", "Nyabihu", "Kigali", "Rubavu", 12, "Musanze"}, {3, "Prince", "Nyabihu", "Kigali", "Rubavu", 12, "Musanze"}};
+            Object[] columns = {"Vehicle Id", "Driver Name", "Current Location", "Destination", "Source Location", "Fuel Level", "Nearest Station", "Departure Time", "Arriving time"};
+            new Table("Tracking", data, columns);
+          /*  JSONObject jsonHolder = new JSONObject();
             ObjectMapper objectMapper = new ObjectMapper();
             Data_format dataFormat = new Data_format();
             dataFormat.setEmail(userText);
@@ -139,27 +143,29 @@ public class Register extends JFrame implements ActionListener {
             requestBody.setData(dataFormat);
             LoginHelper loginHelper = new LoginHelper();
             ResponseBody responseBody = null;
+
             try {
                 System.out.println(userText.toString());
                 responseBody = loginHelper.login(requestBody);
                 if (Integer.parseInt(responseBody.getStatus()) == 200) {
                     System.out.println("Registered Successfully");
                     Properties properties = new Properties();
-                    FileWriter fileWriter = new FileWriter("C:\\Users\\user\\IdeaProjects\\logdelui\\New folder\\LogdelUI\\config.properties");
+                    FileWriter fileWriter = new FileWriter(
+                            "C:\\Users\\user\\IdeaProjects\\logdelui\\New folder\\LogdelUI\\config.properties");
                     jsonHolder = new JSONObject(responseBody.getData().toString());
                     String userid = jsonHolder.getString("vehicleId").toString();
                     properties.setProperty("VehicleId", userid);
                     properties.store(fileWriter, "Registered vehicle");
                     System.lineSeparator().repeat(100);
-                    Register frame = new Register();
-                    frame.setTitle("Dashboard");
-                    frame.setVisible(true);
+                    Object[][] data = {{1, "Prince", "kyabihu", "Kigali", "Rubavu", 12, "Musanze"}, {1, "Prince", "Nyabihu", "Kigali", "Rubavu", 12, "Musanze"}, {1, "Prince", "Nyabihu", "Kigali", "Rubavu", 12, "Musanze"}};
+                    Object[] columns = {"Vehicle Id", "Driver Name", "Current Location", "Destination", "Source Location", "Fuel Level", "Nearest Station", "Departure Time", "Arriving time"};
+                    new Table("Tracking", data, columns);
                 } else {
                     JOptionPane.showMessageDialog(this, "Invalid credentials");
                 }
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
-            }
+            }*/
         }
         if (e.getSource() == resetbutton) {
             nameField.setText("");
@@ -174,10 +180,10 @@ public class Register extends JFrame implements ActionListener {
     }
 
     public static void mainMethod() {
-        Register framed=new Register();
+        Register framed = new Register();
         framed.setTitle("Welcome back to Logdel");
         framed.setVisible(true);
-        framed.setBounds(10,10,370,600);
+        framed.setBounds(10, 10, 370, 600);
         framed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         framed.setResizable(false);
     }
