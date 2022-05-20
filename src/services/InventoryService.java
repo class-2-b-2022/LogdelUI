@@ -1,12 +1,16 @@
 package services;
 
 import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import formats.ProductModel;
 import models.InventoryModel;
 import formats.RequestBody;
 import formats.ResponseBody;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import utils.ClientServerConnector;
 import utils.ConnectToServer;
 
 import java.util.ArrayList;
@@ -28,9 +32,6 @@ public class InventoryService {
         this.objectMapper = new ObjectMapper();
         this.responseBody = new ResponseBody();
     }
-
-
-
     public List<InventoryModel> getInventory(){
         List<InventoryModel> inventories = new ArrayList<>();
         try {
@@ -58,5 +59,36 @@ public class InventoryService {
         }finally {
             return inventories;
         }
+    }
+    public List<ProductModel> getProducts() throws Exception {
+        List<ProductModel> products = new ArrayList<>();
+        try{
+            requestBody.setRoute("/products");
+            requestBody.setAction("GET");
+            requestBody.setData(branchId);
+            json = objectMapper.writeValueAsString(requestBody);
+            responseBody = ConnectToServer.connectToServer(requestBody);
+            JSONArray jsonArray = new JSONArray(responseBody.getData().toString());
+            for (int i=0; i<jsonArray.length(); i++) {
+                JSONObject json = jsonArray.getJSONObject(i);
+                ProductModel productModel = new ProductModel();
+                productModel.setProductType((String) json.get("productType"));
+                productModel.setProductName((String) json.get("productName"));
+                productModel.setProductId((int) json.get("productId"));
+                productModel.setPricePerBulk((int) json.get("pricePerBulk"));
+                products.add(productModel);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            return products;
+        }
+    }
+    public String createInventory(InventoryModel inventoryModel) throws Exception {
+        this.requestBody.setRoute("/inventory");
+        this.requestBody.setAction("POST");
+        this.requestBody.setData(inventoryModel);
+        responseBody = ConnectToServer.connectToServer(requestBody);
+        return responseBody.getMessage();
     }
 }
