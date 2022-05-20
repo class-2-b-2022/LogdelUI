@@ -4,6 +4,8 @@ import utils.Theme;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Wallet{
     JFrame frame = new JFrame();
@@ -22,14 +24,16 @@ public class Wallet{
     JPanel div2 = new JPanel();
     JPanel div3 = new JPanel();
     JPanel nav = new JPanel();
-
+    JPanel buttons = new JPanel();
+    JButton btn = createButton("SAVE TO MY WALLET", Color.white);
+    JFrame frame2;
     public Wallet(){
 
         mybalance.setFont(new Font("Arial", Font.BOLD, 20));
         mybalance.setHorizontalAlignment(SwingConstants.CENTER);
         mybalance.setForeground(theme.getPrimary());
 
-        amount.setFont(new Font("Arial", Font.BOLD, 50));
+        amount.setFont(new Font("Arial", Font.BOLD, 40));
         amount.setHorizontalAlignment(SwingConstants.CENTER);
         amount.setForeground(theme.getSecondary());
 
@@ -37,15 +41,72 @@ public class Wallet{
 //        container.setLayout(new GridLayout(2,1));
 //        container.setBackground(Color.cyan);
 
+        logoWord.setFont(new Font("Arial",Font.BOLD,20));
+//        logoWord.setAlignmentX(Component.CENTER_ALIGNMENT);
+        logoWord.setForeground(theme.getPrimary());
+
+        nav.setLayout(new BoxLayout(nav,BoxLayout.Y_AXIS));
 //        nav.setBackground(Color.cyan);
+        nav.add(new JLabel(" "));
         nav.add(logoWord);
-        nav.add(word);
+//        nav.add(new JPanel().add(word));
         nav.setPreferredSize(new Dimension(300,30));
 
         balance.setLayout(new GridLayout(2,1));
         balance.add(mybalance);
         balance.add(amount);
+
+        buttons.setBounds(200,300,700,500);
+//        buttons.setBackground(Color.red);
+        btn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                frame2 = new JFrame("Save");
+                Container c = new Container();
+                JLabel title = new JLabel("Add Some amount");
+                JLabel name = new JLabel("Amount");
+                JTextField tname = new JTextField();
+                JLabel id = new JLabel("ID");
+                JTextField tid = new JTextField();
+                JPanel pan = new JPanel();
+                pan.add(id);
+                pan.add(tid);
+
+                name.setFont(new Font("Arial", Font.PLAIN, 20));
+                name.setSize(100, 20);
+                name.setLocation(100, 100);
+
+                tname.setFont(new Font("Arial", Font.PLAIN, 15));
+                tname.setSize(190, 20);
+                tname.setLocation(200, 100);
+
+                id.setFont(new Font("Arial", Font.PLAIN, 20));
+                id.setSize(100, 20);
+                id.setLocation(100, 100);
+
+                tid.setFont(new Font("Arial", Font.PLAIN, 15));
+                tid.setSize(190, 20);
+                tid.setLocation(200, 100);
+
+                frame2.add(title);
+//                frame2.add(id);
+                frame2.add(tid);
+                frame2.add(name);
+                frame2.add(tname);
+
+                frame2.add(createButton("Save",theme.getPrimary()));
+                frame2.setVisible(true);
+                frame2.setBackground(Color.red);
+                frame2.setBounds(300, 130, 500, 500);
+                frame2.setLayout(null);
+            }
+        });
+        buttons.add(btn);
+
         container.add(balance);
+
+
 
 //        word.setHorizontalAlignment(SwingConstants.LEFT);
         
@@ -56,7 +117,6 @@ public class Wallet{
         transtxt.setHorizontalAlignment(SwingConstants.CENTER);
         transtxt.setFont(new Font("Arial",Font.BOLD,20));
         transtxt.setForeground(theme.getPrimary());
-
         trans.add(transtxt);
 
         ImageIcon image = new ImageIcon("C:\\Users\\student\\Downloads\\pics\\sour.jpg");
@@ -102,7 +162,7 @@ public class Wallet{
         div1.setBounds(200,300,700,700);
         div1.setBackground(Color.white);
         div1.setPreferredSize(new Dimension(300,50));
-        div1.add(new JLabel("Joan June"));
+        div1.add(new JLabel("Cimerwa"));
         JLabel n2 = new JLabel("-$500");
         n2.setForeground(Color.red);
         div1.add(n2);
@@ -122,7 +182,7 @@ public class Wallet{
         div3.setBounds(200,300,700,700);
         div3.setBackground(Color.white);
         div3.setPreferredSize(new Dimension(300,50));
-        div3.add(new JLabel("Acele Happy"));
+        div3.add(new JLabel("Bralirwa"));
         JLabel n4 = new JLabel("-$4320");
         n4.setForeground(Color.red);
         div3.add(n4);
@@ -140,12 +200,28 @@ public class Wallet{
         frame.add(nav);
         frame.add(container);
         frame.add(trans);
+        frame.add(buttons);
         frame.add(transactions);
+
+        JScrollPane jScrollPane = new JScrollPane(transactions);
+        jScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+//        jScrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        frame.getContentPane().add(jScrollPane);
+
         frame.setBackground(Color.red);
         frame.setBounds(300, 130, 700, 500);
-        frame.setLayout(new GridLayout(4,1));
+        frame.setLayout(new GridLayout(5,1));
         frame.setVisible(true);
         frame.setResizable(false);
+    }
+
+    public JButton createButton(String text, Color color){
+        JButton button = new JButton(text);
+        button.setForeground(color!=null ? color: Color.white);
+        button.setBorder(BorderFactory.createEmptyBorder(5, 20, 10, 20));
+        button.setBackground(theme.getPrimary());
+        button.setFocusable(false);
+        return button;
     }
 
 
