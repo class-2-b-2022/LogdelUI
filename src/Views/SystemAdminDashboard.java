@@ -17,8 +17,6 @@ public class SystemAdminDashboard extends JPanel {
         int x, y;  // for clarity
         constraints.gridheight = 7; // span two rows
 
-
-
         addGB(new DashboardSidebar().returnSidebar(),   x = 0, y = 0, 0.1);
         constraints.gridheight = 1; // set it back
 
