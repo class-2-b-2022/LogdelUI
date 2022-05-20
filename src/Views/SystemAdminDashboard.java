@@ -2,7 +2,6 @@ package Views;
 
 import javax.swing.*;
 
-import handlers.RoutingHandler;
 import pages.Inventory;
 import utils.Theme;
 
@@ -15,9 +14,6 @@ public class SystemAdminDashboard extends JPanel {
     Panel navbar = new Panel();
     JButton showInventory;
     Theme theme = new Theme();
-
-    private Color color = new Theme().getPrimary();
-    private Color secColor = new Theme().getSubPrimary();
     public JButton createButton(String text, Color color){
         JButton button = new JButton(text);
         button.setForeground(color!=null ? color: Color.white);
@@ -36,13 +32,13 @@ public class SystemAdminDashboard extends JPanel {
 
         Panel sidebar = new Panel();
         sidebar.setLayout(new GridLayout(5, 1));
-        sidebar.setBackground(color);
+        sidebar.setBackground(new Color(31, 31, 115));
 
         Panel sidebarOpt1=new Panel();
         sidebarOpt1.setLayout(new GridLayout(2, 1));
         Button l1=new Button("Company Management");
         l1.setFont(new Font("Arial", Font.BOLD, 15));
-        l1.setBackground(color);
+        l1.setBackground(new Color(31, 31, 115));
         l1.setForeground(Color.white);
         JLabel label = new JLabel();
 //        label.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -56,10 +52,8 @@ public class SystemAdminDashboard extends JPanel {
         sidebarOpt2.setLayout(new GridLayout(2, 1));
         Button l2=new Button("Delivery");
         l2.setFont(new Font("Arial", Font.BOLD, 15));
-        l2.setBackground(color);
+        l2.setBackground(new Color(31, 31, 115));
         l2.setForeground(Color.white);
-        l2.setActionCommand("delivery");
-        l2.addActionListener(new RoutingHandler());
         JLabel la2=new JLabel();
 //        la2.setLayout(new FlowLayout(FlowLayout.CENTER));
         la2.setIcon(new ImageIcon("assets\\truck.png"));// your image here
@@ -71,7 +65,7 @@ public class SystemAdminDashboard extends JPanel {
         sidebarOpt3.setLayout(new GridLayout(2, 1));
         Button l3=new Button("Notifications");
         l3.setFont(new Font("Arial", Font.BOLD, 15));
-        l3.setBackground(color);
+        l3.setBackground(new Color(31, 31, 115));
         l3.setForeground(Color.white);
         JLabel la3=new JLabel();
         la3.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -84,7 +78,7 @@ public class SystemAdminDashboard extends JPanel {
         sidebarOpt4.setLayout(new GridLayout(2, 1));
         Button l4=new Button("Billing");
         l4.setFont(new Font("Arial", Font.BOLD, 15));
-        l4.setBackground(color);
+        l4.setBackground(new Color(31, 31, 115));
         l4.setForeground(Color.white);
         JLabel la4=new JLabel();
         la4.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -97,7 +91,7 @@ public class SystemAdminDashboard extends JPanel {
         sidebarOpt5.setLayout(new GridLayout(2, 1));
         Button l5=new Button("Account");
         l5.setFont(new Font("Arial", Font.BOLD, 15));
-        l5.setBackground(color);
+        l5.setBackground(new Color(31, 31, 115));
         l5.setForeground(Color.white);
         JLabel la5=new JLabel();
 //        la5.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -115,41 +109,41 @@ public class SystemAdminDashboard extends JPanel {
         appTitle.setBounds(0, 0, 300, 40);
         appTitle.setFont(new Font("Arial", Font.BOLD, 18));
 
-        navbar.setBackground(secColor);
+        navbar.setBackground(new Color(000033));
         navbar.setLayout(new GridLayout(1, 2));
         navbar.add(appTitle);
 
         JLabel la6=new JLabel();
         Panel profile = new Panel();
         profile.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        la6.setIcon(new ImageIcon("assets/profile.png"));// your image here
+        la6.setIcon(new ImageIcon("assets\\profile.png"));// your image here
         profile.add(la6);
         navbar.add(profile);
 
         addGB(navbar,   x = 1, y = 0, 0.8);
 
         Panel contentHolder = new Panel();
-        contentHolder.setBackground(Color.WHITE);
+        contentHolder.setBackground(new Color(0x303057));
         addGB(contentHolder, x=1, y=1, 0.8);
 
         Panel contentHolder1 = new Panel();
-        contentHolder1.setBackground(Color.WHITE);
+        contentHolder1.setBackground(new Color(0x303057));
         addGB(contentHolder1, x=1, y=2, 0.8);
 
         Panel contentHolder2 = new Panel();
-        contentHolder2.setBackground(Color.WHITE);
+        contentHolder2.setBackground(new Color(0x303057));
         addGB(contentHolder2, x=1, y=3, 0.8);
 
         Panel contentHolder3 = new Panel();
-        contentHolder3.setBackground(Color.WHITE);
+        contentHolder3.setBackground(new Color(0x303057));
         addGB(contentHolder3, x=1, y=4, 0.8);
 
         Panel contentHolder4 = new Panel();
-        contentHolder4.setBackground(Color.WHITE);
+        contentHolder4.setBackground(new Color(0x303057));
         addGB(contentHolder4, x=1, y=5, 0.8);
 
         Panel contentHolder5 = new Panel();
-        contentHolder5.setBackground(Color.WHITE);
+        contentHolder5.setBackground(new Color(0x303057));
         addGB(contentHolder5, x=1, y=6, 0.8);
 
 //        constraints.gridwidth = 2; // span two columns

@@ -1,7 +1,7 @@
 package main;
 
+import pages.Dashboard;
 import Views.SystemAdminDashboard;
-
 import pages.Welcome;
 import utils.CheckLoggedInStatus;
 
@@ -15,7 +15,5 @@ public class Main {
         }else{
             SystemAdminDashboard.mainMethod();
         }
-
-
     }
 }
