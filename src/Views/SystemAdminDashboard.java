@@ -29,8 +29,9 @@ public class SystemAdminDashboard extends JPanel {
         l1.setBackground(new Color(31, 31, 115));
         l1.setForeground(Color.white);
         JLabel label = new JLabel();
-        label.setLayout(new FlowLayout(FlowLayout.CENTER));
+//        label.setLayout(new FlowLayout(FlowLayout.CENTER));
         label.setIcon(new ImageIcon("assets\\industry.png"));// your image here
+        label.setForeground(Color.red);
         sidebarOpt1.add(label);
         sidebarOpt1.add(l1);
         sidebar.add(sidebarOpt1);
@@ -81,13 +82,13 @@ public class SystemAdminDashboard extends JPanel {
         l5.setBackground(new Color(31, 31, 115));
         l5.setForeground(Color.white);
         JLabel la5=new JLabel();
-        la5.setLayout(new FlowLayout(FlowLayout.CENTER));
+//        la5.setLayout(new FlowLayout(FlowLayout.CENTER));
         la5.setIcon(new ImageIcon("assets\\account.png"));// your image here
         sidebarOpt5.add(la5);
         sidebarOpt5.add(l5);
         sidebar.add(sidebarOpt5);
 
-        addGB(sidebar,   x = 0, y = 0, 0.2);
+        addGB(sidebar,   x = 0, y = 0, 0.1);
         constraints.gridheight = 1; // set it back
 
         Label appTitle = new Label();
@@ -99,6 +100,14 @@ public class SystemAdminDashboard extends JPanel {
         navbar.setBackground(new Color(000033));
         navbar.setLayout(new GridLayout(1, 2));
         navbar.add(appTitle);
+
+        JLabel la6=new JLabel();
+        Panel profile = new Panel();
+        profile.setLayout(new FlowLayout(FlowLayout.RIGHT));
+        la6.setIcon(new ImageIcon("assets\\profile.png"));// your image here
+        profile.add(la6);
+        navbar.add(profile);
+
         addGB(navbar,   x = 1, y = 0, 0.8);
 
         Panel contentHolder = new Panel();
