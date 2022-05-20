@@ -3,6 +3,9 @@ package components;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Author: Yves Isite
+ */
 public class DashboardNavbar {
     private Panel navbar=new Panel();
     public Panel returnNavbar(String title,String adminName) {

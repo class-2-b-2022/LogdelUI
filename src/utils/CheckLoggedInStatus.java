@@ -38,7 +38,7 @@ public class CheckLoggedInStatus {
          }
         return true;
     }
-    public static User getLoggedInUser() throws Exception {
+    public User getLoggedInUser() throws Exception {
         prop.load(fileReader);
         JSONObject jsonHolder = new JSONObject();
         if(isLoggedIn()){

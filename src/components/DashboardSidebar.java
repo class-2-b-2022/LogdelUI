@@ -8,6 +8,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Author: Yves Isite
+ */
 public class DashboardSidebar extends Panel {
     private Panel sidebar = new Panel();
     JButton showInventory;
