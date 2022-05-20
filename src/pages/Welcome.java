@@ -1,5 +1,6 @@
 package pages;
 
+import Views.Login;
 import utils.Theme;
 
 import javax.swing.*;
@@ -11,8 +12,8 @@ public class Welcome implements ActionListener {
     JFrame frame = new JFrame();
     Theme theme = new Theme();
     JLabel inWord = new JLabel("WELCOME TO LOGDEL");
-    ImageIcon imageIcon = new ImageIcon(new ImageIcon("assets\\logdel.png").getImage().getScaledInstance(200, 220, Image.SCALE_DEFAULT));
-    ImageIcon headerIcon = new ImageIcon("assets\\logdelWhite.png");
+    ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Projects\\LogdelUI\\src\\assets\\logdel.png").getImage().getScaledInstance(200, 220, Image.SCALE_DEFAULT));
+    ImageIcon headerIcon = new ImageIcon("C:\\Projects\\LogdelUI\\src\\assets\\logdelWhite.png");
 
 
     JLabel logo = new JLabel();
@@ -23,6 +24,7 @@ public class Welcome implements ActionListener {
     JButton login = createButton("Login",null);
     JButton registerCompanyBtn = createButton("Register your company",new Color(0, 51, 102));
     public Welcome(){
+        login.addActionListener(this);
         frame.setBounds(300, 130, 700, 500);
         frame.setIconImage(headerIcon.getImage());
         container.setBounds(0, 50, 700, 500);
@@ -46,6 +48,21 @@ public class Welcome implements ActionListener {
         frame.setVisible(true);
         frame.setResizable(false);
     }
+
+    public void InventoryHomePage() {
+        frame.setBounds(300, 130, 700, 500);
+        frame.setIconImage(headerIcon.getImage());
+        container.setBounds(0, 50, 700, 500);
+
+        inWord.setText("Welcome to LogdelUI INVENTORY");
+        inWord.setHorizontalAlignment(SwingConstants.CENTER);
+        inWord.setForeground(theme.getPrimary());
+        inWord.setFont(new Font("Arial", Font.BOLD, 20));
+
+        JButton create = createButton("Create",null);
+        frame.add(create);
+    }
+
     public JLabel createLabel(String text, Color color){
         JLabel label = new JLabel(text);
         label.setForeground(color);
@@ -61,6 +78,10 @@ public class Welcome implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-
+      if(e.getSource() == login){
+          System.out.println("do this");
+          frame.dispose();
+          new Login().mainMethod();
+      }
     }
 }
