@@ -35,10 +35,7 @@ public class VehicleService {
 
             json = objectMapper.writeValueAsString(requestBody);
             responseBody = ConnectToServer.connectToServer(requestBody);
-            System.out.println(responseBody.getData());
             JSONArray jsonArray = new JSONArray(responseBody.getData().toString() + "]");
-            System.out.println("json data");
-            System.out.println(jsonArray.getJSONObject(0));
             for (int i=0; i<jsonArray.length(); i++) {
                 JSONObject json = jsonArray.getJSONObject(i);
                 VehicleModel vehicle = new VehicleModel();
@@ -59,15 +56,12 @@ public class VehicleService {
 
     public Object[][] getAllVehiclesAsObject(){
         List<VehicleModel> vehicles = getVehicles();
-        System.out.println(vehicles);
         Object[][] data = new Object[vehicles.size()][];
-        int i = 0;
-        for(VehicleModel vehicle: vehicles){
-            int k = 0;
-            data[i][k] = new Object();
+        for(int i=0;i< vehicles.size();i++){
+            VehicleModel vehicle = vehicles.get(i);
+            data[i] = new Object[vehicles.size()];
+            data[i] = new String[]{String.valueOf(vehicle.getVehicleId()), vehicle.getModel(), vehicle.getPlateNbr(), vehicle.getBrand(), vehicle.getDescription()};
         }
-        System.out.println(data);
-        System.exit(1);
-        return null;
+        return data;
     }
 }
