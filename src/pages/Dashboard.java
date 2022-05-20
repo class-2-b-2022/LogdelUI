@@ -20,7 +20,7 @@ public class Dashboard {
        showInventory.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               Inventory inventory = new Inventory();
+               Inventory inventory = new Inventory(1);
 
            }
        });
