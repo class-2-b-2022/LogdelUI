@@ -21,7 +21,9 @@ public class Login extends JFrame implements ActionListener {
     JButton loginbutton=new JButton("Login");
     JButton resetbutton=new JButton("Reset");
     JCheckBox showpass=new JCheckBox("Show Password");
-    Login() {
+
+    public Login() {
+
         setLayoutManager();
         setLocationAndSize();
         addComponentTocontainer();
@@ -99,10 +101,12 @@ public class Login extends JFrame implements ActionListener {
             if(Integer.parseInt(responseBody.getStatus()) == 200){
                 System.out.println("Loggedin Successfully");
                 Properties properties=new Properties();
-                FileWriter fileWriter=new FileWriter("C:\\Users\\user\\IdeaProjects\\logdelui\\New folder\\LogdelUI\\config.properties");
+                FileWriter fileWriter=new FileWriter("config.properties");
                 jsonHolder=new JSONObject(responseBody.getData().toString());
-                String userid=jsonHolder.getString("userId").toString();
-                properties.setProperty("userId",userid);
+                System.out.println(jsonHolder);
+                String userid= jsonHolder.get("userId").toString();
+                System.out.println(userid);
+                properties.setProperty("userId", String.valueOf(userid));
                 properties.store(fileWriter,"Loggedin User");
                 System.lineSeparator().repeat(100);
                 Login frame=new Login();
@@ -127,13 +131,15 @@ public class Login extends JFrame implements ActionListener {
         }
     }
     }
-    public static void main(String[] args) {
-        Login frame=new Login();
-        frame.setTitle("Welcome back to Logdel");
-        frame.setVisible(true);
-        frame.setBounds(10,10,370,600);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+
+    public static void mainMethod() {
+        Login framed=new Login();
+        framed.setTitle("Welcome back to Logdel");
+        framed.setVisible(true);
+        framed.setBounds(10,10,370,600);
+        framed.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framed.setResizable(false);
+
 
     }
     }
