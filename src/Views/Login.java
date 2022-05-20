@@ -109,9 +109,12 @@ public class Login extends JFrame implements ActionListener {
                 properties.setProperty("userId", String.valueOf(userid));
                 properties.store(fileWriter,"Loggedin User");
                 System.lineSeparator().repeat(100);
-                Login frame=new Login();
-                frame.setTitle("Dashboard");
-                frame.setVisible(true);
+
+                this.dispose();
+                SystemAdminDashboard.mainMethod();
+
+
+
             }else {
                 JOptionPane.showMessageDialog(this, "Invalid Email or Password");
             }
