@@ -80,6 +80,8 @@ public class RegisterUsers extends JFrame {
         branchList.setBounds(130, 60, 250, 40);
 
         registerButton.setBounds(130, 385, 250, 40);
+        registerButton.setBackground(new Color(30, 143, 255));
+        registerButton.setForeground(Color.white);
 
         validationError.setBounds(130, 340, 250, 40);
         validationError.setForeground(Color.red);
@@ -104,7 +106,7 @@ public class RegisterUsers extends JFrame {
         container.add(validationError);
     }
 
-    public static void main(String[] args) {
+    public static void mainMethod() {
         RegisterUsers frame = new RegisterUsers();
 
         frame.setTitle("Register Users");
