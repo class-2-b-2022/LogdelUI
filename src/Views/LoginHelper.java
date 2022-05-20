@@ -17,7 +17,7 @@ public class LoginHelper {
     {
         // establish a connection by providing host and port
         // number
-        try (Socket socket = new Socket("192.168.1.230", 5450)) {
+        try (Socket socket = new Socket("localhost", 5450)) {
 
             ObjectOutputStream out = new ObjectOutputStream(socket.getOutputStream());
 
