@@ -1,9 +1,6 @@
 package main;
 
-import pages.Billing;
-import pages.Dashboard;
-import pages.LoginPage;
-import pages.Welcome;
+import pages.*;
 import utils.CheckLoggedInStatus;
 
 import java.io.IOException;
@@ -16,7 +13,8 @@ public class Main {
         }else{
 //            new Welcome();
 
-            new Billing();
+
+            new Tracking();
         }
 
     }

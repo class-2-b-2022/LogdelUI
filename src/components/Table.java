@@ -48,7 +48,7 @@ public class Table extends JFrame {
 
         table.getTableHeader().setOpaque(false);
         table.setShowGrid(false);
-
+        table.setAutoCreateRowSorter(true);
         table.getTableHeader().setReorderingAllowed(false);
         Color color = new Color(112,0,0);
         table.getTableHeader().setBackground(color);
