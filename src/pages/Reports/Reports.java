@@ -3,9 +3,6 @@ package pages.Reports;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import components.InventoryReport;
-import components.Table;
-import formats.RequestBody;
-import formats.ResponseBody;
 import utils.Theme;
 
 import javax.swing.*;
@@ -85,23 +82,6 @@ public class Reports extends JFrame implements ActionListener {
 
             container.add(content);
             Object[][] data= null;
-
-//            Object [][] data = null;
-//
-//            for( Integer y=0; y<rows; y++ ) {
-//                myArray.push( [] );
-//            }
-//            for (var i = 0; i < rows; i++)
-//            {
-//                for (var j =  myArray[i].length; j < cols; j++)
-//                {
-//                    myArray[i].push(0);
-//                }
-//            }
-//            i++;
-//            Object [] columns = {"walletId", "Type", "Amount", "Date","Received From","Payed To"};
-
-//            new Table("Inventory",data,columns);
         }
 
         title.setHorizontalAlignment(SwingConstants.CENTER);

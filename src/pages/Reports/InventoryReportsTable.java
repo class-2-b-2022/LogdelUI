@@ -46,7 +46,7 @@ public class InventoryReportsTable {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    reportManager.viewReports();
+                    InventoryReportsTable.InventoryReportsTable();
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -72,7 +72,7 @@ public class InventoryReportsTable {
         inventoriesTable = new JTable(defaultTableModel);
         inventoriesTable.setPreferredScrollableViewportSize(new Dimension(300, 100));
         inventoriesTable.setFillsViewportHeight(true);
-        inventoriesTable.getTableHeader().setBackground(Color.BLUE);
+        inventoriesTable.getTableHeader().setBackground(new Color(255, 3, 98));
         inventoriesTable.getTableHeader().setForeground(Color.white);
         inventoriesTable.setDefaultRenderer(Object.class, new TableCellRenderer(){
             private final DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
@@ -80,7 +80,7 @@ public class InventoryReportsTable {
             public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
                 Component c = DEFAULT_RENDERER.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
                 if (row%2 == 0){
-                    c.setBackground(new Color(1, 150,200));
+                    c.setBackground(new Color(255, 134, 180));
                 }
                 else {
                     c.setBackground(new Color(215,215,215));
