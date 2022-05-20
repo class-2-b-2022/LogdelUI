@@ -1,7 +1,6 @@
 package main;
 
 import pages.Dashboard;
-import pages.LoginPage;
 import pages.Welcome;
 import utils.CheckLoggedInStatus;
 
