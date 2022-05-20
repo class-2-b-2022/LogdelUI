@@ -84,10 +84,11 @@ public class InventoryService {
             return products;
         }
     }
-    public void createInventory(InventoryModel inventoryModel) throws Exception {
+    public String createInventory(InventoryModel inventoryModel) throws Exception {
         this.requestBody.setRoute("/inventory");
         this.requestBody.setAction("POST");
         this.requestBody.setData(inventoryModel);
         responseBody = ConnectToServer.connectToServer(requestBody);
+        return responseBody.getMessage();
     }
 }

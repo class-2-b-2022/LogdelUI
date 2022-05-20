@@ -9,7 +9,9 @@ import services.InventoryService;
 import utils.ConnectToServer;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +73,31 @@ public class Inventory {
             inventoriesTable = new JTable(defaultTableModel);
             inventoriesTable.setPreferredScrollableViewportSize(new Dimension(300, 100));
             inventoriesTable.setFillsViewportHeight(true);
-            frame.add(new JScrollPane(inventoriesTable));
+            inventoriesTable.getTableHeader().setBackground(Color.BLUE);
+            inventoriesTable.getTableHeader().setForeground(Color.white);
+            inventoriesTable.setDefaultRenderer(Object.class, new TableCellRenderer(){
+                private final DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
+                @Override
+                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                    Component c = DEFAULT_RENDERER.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                    if (row%2 == 0){
+                        c.setBackground(new Color(1, 150,200));
+                    }
+                    else {
+                        c.setBackground(new Color(215,215,215));
+                    }
+                    return c;
+                }
+
+            });
+            ((DefaultTableCellRenderer)inventoriesTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+
+            JScrollPane inventoryTableDisplay = new JScrollPane(inventoriesTable);
+            inventoriesTable.getTableHeader().setPreferredSize(new Dimension(inventoriesTable.getWidth(),40));
+            inventoryTableDisplay.getViewport().setBackground(Color.WHITE);
+            inventoriesTable.setBorder(BorderFactory.createLineBorder(Color.white));
+
+            frame.add(inventoryTableDisplay);
             defaultTableModel.addColumn("Quantity");
             defaultTableModel.addColumn("Product Name");
             defaultTableModel.addColumn("Price");
@@ -88,9 +114,10 @@ public class Inventory {
             JLabel  l_quantity, l_status, l_productId, l_mainHeader;
             JTextField  t_quantity;
             Choice c_status, c_product;
+            JLabel message  = new JLabel();
             JFrame frame = new JFrame();
             frame.setVisible(true);
-            frame.setSize(420, 420);
+            frame.setSize(600, 600);
             frame.setLayout(null);
             frame.setTitle("Create Inventory");
 
@@ -140,9 +167,13 @@ public class Inventory {
                     inventoryModel.setQuantity(Integer.parseInt(t_quantity.getText()));
                     inventoryModel.setBranchId(branchId);
                     try {
-                        inventoryService.createInventory(inventoryModel);
+                        message.setText(inventoryService.createInventory(inventoryModel));
+                        frame.add(message);
+                        Thread.sleep(1000);
                     } catch (Exception ex) {
                         throw new RuntimeException(ex);
+                    }finally {
+                        frame.dispose();
                     }
 
                 }
