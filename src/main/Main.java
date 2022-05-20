@@ -13,7 +13,6 @@ public class Main {
         if(CheckLoggedInStatus.isLoggedIn()){
             SystemAdminDashboard.mainMethod();
         }else{
-            System.out.println("Little changes");
             new Welcome();
         }
 
