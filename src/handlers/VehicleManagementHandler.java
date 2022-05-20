@@ -1,6 +1,7 @@
 package handlers;
 
 import components.Table;
+import services.VehicleService;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,6 +10,8 @@ public class VehicleManagementHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getActionCommand().equals("view_vehicles")){
+            VehicleService vehicleService = new VehicleService();
+            vehicleService.getAllVehiclesAsObject();
             Object [][] data = {
                     {1, "SUZUKI-300","RAC 450 F","Suzuki","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has"},
                     {2, "NISSANI-ER45","RAF 660 A","Nissani","Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has"},
