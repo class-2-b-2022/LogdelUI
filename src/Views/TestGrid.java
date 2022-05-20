@@ -20,14 +20,6 @@ public class TestGrid {
 //natural height, maximum width
             c.fill = GridBagConstraints.HORIZONTAL;
         }
-        button = new JButton("Long-Named Button 4");
-        c.fill = GridBagConstraints.HORIZONTAL;
-        c.ipady = 40;      //make this component tall
-        c.weightx = 0.0;
-//        c.gridwidth = 4;
-        c.gridx = 3;
-        c.gridy = 0;
-        pane.add(button, c);
 
         button = new JButton("Button 1");
         if (shouldWeightX) {
@@ -52,7 +44,14 @@ public class TestGrid {
         c.gridy = 0;
         pane.add(button, c);
 
-
+        button = new JButton("Long-Named Button 4");
+        c.fill = GridBagConstraints.HORIZONTAL;
+        c.ipady = 40;      //make this component tall
+        c.weightx = 0.0;
+        c.gridwidth = 4;
+        c.gridx = 0;
+        c.gridy = 1;
+        pane.add(button, c);
 
         button = new JButton("5");
         c.fill = GridBagConstraints.HORIZONTAL;
@@ -81,10 +80,6 @@ public class TestGrid {
     }
 
     public static void main(String[] args) {
-        javax.swing.SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                createAndShowGUI();
-            }
-        });
+        javax.swing.SwingUtilities.invokeLater(() -> createAndShowGUI());
     }
 }
