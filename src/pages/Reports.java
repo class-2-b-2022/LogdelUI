@@ -57,20 +57,17 @@ public class Reports extends JFrame implements ActionListener {
         company_panel.add(company);
         company_panel.add(company_content);
 
-//        title.setLayout(new GridLayout(1,5));
-//        date_panel.setLayout(new GridLayout(1,5));
-//        product_panel.setLayout(new GridLayout(1,5));
-//        status_panel.setLayout(new GridLayout(1,5));
-//        quantity_panel.setLayout(new GridLayout(1,5));
-        container.setLayout(new GridLayout(7,1));
+        content.setLayout(new GridLayout(7,1));
+        content.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
         container.add(title);
-        container.add(date_panel);
-        container.add(product_panel);
-        container.add(status_panel);
-        container.add(quantity_panel);
-        container.add(company_panel);
+        content.add(date_panel);
+        content.add(product_panel);
+        content.add(status_panel);
+        content.add(quantity_panel);
+        content.add(company_panel);
 
-        container.setBackground(theme.getSecondary());
+        container.add(content);
+        container.setBackground(Color.white);
         frame.add(container);
         frame.setResizable(false);
         frame.setVisible(true);
