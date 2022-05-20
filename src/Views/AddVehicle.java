@@ -1,9 +1,16 @@
 package Views;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import data_format.Vehicle_format;
+import formats.RequestBody;
+import formats.ResponseBody;
+import org.json.JSONObject;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Properties;
 
 
 public class AddVehicle extends JFrame implements ActionListener {
@@ -67,16 +74,13 @@ public class AddVehicle extends JFrame implements ActionListener {
         container.add(Owner);
         container.add(description);
 
-
         container.add(Createbutton);
         container.add(resetbutton);
     }
     public void addActionEvent(){
         Createbutton.addActionListener(this);
         resetbutton.addActionListener(this);
-
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == Createbutton) {
@@ -91,7 +95,6 @@ public class AddVehicle extends JFrame implements ActionListener {
             vehiclebrand = brand.getText();
             vehicleowner = Owner.getText();
             vehicledescription = description.getText();
-
 
             if(vehiclemodel.equalsIgnoreCase("")){
                 JOptionPane.showMessageDialog(this, "Vehicle model is required");
@@ -113,6 +116,44 @@ public class AddVehicle extends JFrame implements ActionListener {
                 JOptionPane.showMessageDialog(this, "vehicle description is required");
                 return;
             }
+            JSONObject jsonHolder = new JSONObject();
+            ObjectMapper objectMapper = new ObjectMapper();
+            Vehicle_format vehicleFormat=new Vehicle_format();
+            vehicleFormat.setBrand(vehiclebrand);
+            vehicleFormat.setModel(vehiclemodel);
+            vehicleFormat.setDescription(vehicledescription);
+            vehicleFormat.setPlateNbr(vehicleplatenumber);
+            vehicleFormat.setOwner(vehicleowner);
+            RequestBody requestBody=new RequestBody();
+            requestBody.setAction("register");
+            requestBody.setRoute("/delivery/vehicles");
+            requestBody.setData(vehicleFormat);
+//            LoginHelper loginHelper=new LoginHelper();
+            VehicleHelper vehicleHelper =new VehicleHelper();
+            ResponseBody responseBody= null;
+            System.out.println("Vehicle added Successfully");
+            try {
+//                System.out.println(userText.toString());
+                responseBody = vehicleHelper.login(requestBody);
+                System.out.println(Integer.parseInt(responseBody.getStatus()));
+                if(Integer.parseInt(responseBody.getStatus()) == 201){
+
+//                    Properties properties=new Properties();
+//                    FileWriter fileWriter=new FileWriter("C:\\Users\\user\\IdeaProjects\\logdelui\\New folder\\LogdelUI\\config.properties");
+//                    jsonHolder=new JSONObject(responseBody.getData().toString());
+//                    String userid=jsonHolder.getString("userId").toString();
+//                    properties.setProperty("userId",userid);
+//                    properties.store(fileWriter,"Loggedin User");
+//                    System.lineSeparator().repeat(100);
+//                    Login frame=new Login();
+//                    frame.setTitle("Dashboard");
+//                    frame.setVisible(true);
+                }else {
+                    JOptionPane.showMessageDialog(this, "Invalid Email or Password");
+                }
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
         }
         if(e.getSource() == resetbutton){
             model.setText("");
@@ -120,7 +161,6 @@ public class AddVehicle extends JFrame implements ActionListener {
             brand.setText("");
             Owner.setText("");
             description.setText("");
-
         }
     }
     public static void main(String[] args) {
