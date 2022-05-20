@@ -26,7 +26,7 @@ public class InventoryReport {
         this.companyName = companyName;
     }
 
-    public String getStatus(String status) {
+    public String getStatus() {
         return this.status;
     }
 
@@ -34,7 +34,7 @@ public class InventoryReport {
         this.status = status;
     }
 
-    public String getProduct(Integer productName) {
+    public String getProduct() {
         return product;
     }
 
@@ -42,7 +42,7 @@ public class InventoryReport {
         this.product = product;
     }
 
-    public Integer getQuantity(int quantity) {
+    public Integer getQuantity() {
         return this.quantity;
     }
 

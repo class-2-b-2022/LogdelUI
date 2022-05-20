@@ -72,5 +72,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Dropbox/PC/Documents/GitHub/logistics-client/logistics-client/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Dropbox/PC/Documents/GitHub/logistics-client/logistics-client/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>
