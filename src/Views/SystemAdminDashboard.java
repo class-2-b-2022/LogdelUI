@@ -60,7 +60,7 @@ public class SystemAdminDashboard extends JPanel {
 
     public static void main(String[] args) {
         JFrame frame = new JFrame("System Admin | Dashboard");
-        frame.setIconImage((new ImageIcon("C:\\Users\\user\\OneDrive\\Documents\\projects\\Logistics-java-project\\logdel-ui\\LogdelUI\\assets\\logo1.png")).getImage());
+        frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.setBounds(0, 0, 1366, 768);
         frame.setContentPane(new SystemAdminDashboard());
@@ -69,7 +69,7 @@ public class SystemAdminDashboard extends JPanel {
 
     public static void mainMethod() {
         JFrame frame = new JFrame("System Admin | Dashboard");
-        frame.setIconImage((new ImageIcon("C:\\Users\\user\\OneDrive\\Documents\\projects\\Logistics-java-project\\logdel-ui\\LogdelUI\\assets\\logo1.png")).getImage());
+        frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
         frame.setBounds(0, 0, 1366, 768);
         frame.setContentPane(new SystemAdminDashboard());
