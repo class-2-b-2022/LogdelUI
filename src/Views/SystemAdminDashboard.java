@@ -2,14 +2,26 @@ package Views;
 
 import javax.swing.*;
 
+import pages.Inventory;
 import utils.Theme;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class SystemAdminDashboard extends JPanel {
     GridBagConstraints constraints = new GridBagConstraints();
     Panel navbar = new Panel();
-
+    JButton showInventory;
+    Theme theme = new Theme();
+    public JButton createButton(String text, Color color){
+        JButton button = new JButton(text);
+        button.setForeground(color!=null ? color: Color.white);
+        button.setBorder(BorderFactory.createEmptyBorder(5, 20, 10, 20));
+        button.setBackground(theme.getPrimary());
+        button.setFocusable(false);
+        return button;
+    }
     public SystemAdminDashboard() {
         setLayout(new GridBagLayout());
         constraints.weightx = 1.0;
@@ -19,6 +31,15 @@ public class SystemAdminDashboard extends JPanel {
         constraints.gridheight = 7; // span two rows
 
         Panel sidebar = new Panel();
+        showInventory = this.createButton("Inventory", null);
+        showInventory.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Inventory inventory = new Inventory();
+
+            }
+        });
+        sidebar.add(showInventory);
         sidebar.setBackground(new Color(31, 31, 115));
         addGB(sidebar,   x = 0, y = 0, 0.2);
         constraints.gridheight = 1; // set it back
@@ -64,14 +85,14 @@ public class SystemAdminDashboard extends JPanel {
         constraints.gridheight = 1;
     }
 
-    void addGB(Component component, int x, int y,double weightx) {
+    public void addGB(Component component, int x, int y,double weightx) {
         constraints.weightx = weightx;
         constraints.gridx = x;
         constraints.gridy = y;
         add(component, constraints);
     }
 
-    public static void main(String[] args) {
+    public static void DashboardMain() {
         JFrame frame = new JFrame("System Admin | Dashboard");
         frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
