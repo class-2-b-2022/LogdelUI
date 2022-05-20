@@ -11,8 +11,8 @@ public class Welcome implements ActionListener {
     JFrame frame = new JFrame();
     Theme theme = new Theme();
     JLabel inWord = new JLabel("WELCOME TO LOGDEL");
-    ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\apps\\projects\\logisticsProject\\logdelUI\\src\\assets\\logdel.png").getImage().getScaledInstance(200, 220, Image.SCALE_DEFAULT));
-    ImageIcon headerIcon = new ImageIcon("C:\\apps\\projects\\logisticsProject\\logdelUI\\src\\assets\\logdelWhite.png");
+    ImageIcon imageIcon = new ImageIcon(new ImageIcon("C:\\Users\\allie\\OneDrive\\Documents\\Java_P\\LogdelUI\\src\\assets\\logdel.png").getImage().getScaledInstance(200, 220, Image.SCALE_DEFAULT));
+    ImageIcon headerIcon = new ImageIcon("C:\\Users\\allie\\OneDrive\\Documents\\Java_P\\LogdelUI\\src\\assets\\logdelwhite.png");
 
 
     JLabel logo = new JLabel();
@@ -37,6 +37,7 @@ public class Welcome implements ActionListener {
         welcome.add(logo);
         welcome.setBackground(theme.getSecondary());
         account.add(login);
+        account.add(registerCompanyBtn);
         account.setBackground(theme.getSecondary());
         account.setLayout(new FlowLayout(FlowLayout.CENTER));
         container.add(welcome);
