@@ -15,6 +15,8 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 public class CreateCompany extends JFrame {
+    JFrame frame = new JFrame();
+
     static ConnectToServer connect = new ConnectToServer();
     Container c;
     JLabel title;
@@ -35,10 +37,10 @@ public class CreateCompany extends JFrame {
     JPanel companyInformation = new JPanel();
     JLabel success;
     public CreateCompany(){
-        setTitle("Registration Form");
-        setBounds(300,90,900,600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-        setResizable(true);
+        frame.setTitle("Registration Form");
+        frame.setBounds(300,90,900,600);
+        frame.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        frame.setResizable(true);
         c = getContentPane();
         c.setLayout(null);
 //        c.setBackground(Color.black);
@@ -122,6 +124,8 @@ public class CreateCompany extends JFrame {
         success.setLocation(100,500);
 
         c.add(success);
+        frame.add(c);
+        frame.setVisible(true);
         main = new JLabel("REGISTER YOUR COMPANY");
 
 
@@ -154,8 +158,10 @@ public class CreateCompany extends JFrame {
                 ResponseBody responseBody = null;
                 try {
                     responseBody = connect.connectToServer(clientRequest);
+                        success.setText("Created company Successfully");
 
-                    success.setText("Created company Successfully");
+
+
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -168,20 +174,7 @@ public class CreateCompany extends JFrame {
         companyInformation = new JPanel();
         companyInformation.add(main);
 //        companyInformation.add(company
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);;
-                try {
-                    System.out.println("Closing dialog");
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-
-
-            }
-        });
+        this.setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
     public void actionPerformed(ActionEvent e) throws Exception {
         if(e.getSource() == submit) {
