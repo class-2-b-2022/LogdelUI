@@ -17,7 +17,7 @@ public class CheckLoggedInStatus {
 
     static {
         try {
-            fileReader = new FileReader("C:\\Users\\allie\\OneDrive\\Documents\\Java_P\\LogdelUI\\config.properties");
+            fileReader = new FileReader("config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -59,11 +59,8 @@ public class CheckLoggedInStatus {
     }
     public static void logout() throws Exception{
         try {
-<<<<<<< HEAD
-            fileWriter = new FileWriter("C:\\Users\\allie\\OneDrive\\Documents\\Java_P\\LogdelUI\\config.properties");
-=======
+
             fileWriter = new FileWriter("config.properties");
->>>>>>> a8fd432ec2093262725dedf23092c3c4942a5192
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

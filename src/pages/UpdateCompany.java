@@ -11,10 +11,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 
-public class CreateCompany extends JFrame {
+public class UpdateCompany extends JFrame {
     static ConnectToServer connect = new ConnectToServer();
     Container c;
     JLabel title;
@@ -34,15 +32,15 @@ public class CreateCompany extends JFrame {
     JButton submit;
     JPanel companyInformation = new JPanel();
     JLabel success;
-    public CreateCompany(){
-        setTitle("Registration Form");
+    public UpdateCompany(){
+        setTitle("Updating Form");
         setBounds(300,90,900,600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
         c = getContentPane();
         c.setLayout(null);
 //        c.setBackground(Color.black);
-        title = new JLabel("Company Registration");
+        title = new JLabel("Updating Company");
         title.setFont(new Font("Arial", Font.PLAIN, 30));
         title.setSize(300, 30);
         title.setLocation(300, 30);
@@ -130,32 +128,34 @@ public class CreateCompany extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 String json = "";
                 System.out.println(name.getText());
-            RequestBody clientRequest = new RequestBody();
-            clientRequest.setRoute("/company");
-            clientRequest.setAction("REGISTER");
-            Company company = new Company();
-            company.setTIN(Integer.valueOf(TIN.getText()));
-            company.setName(name.getText());
+                RequestBody clientRequest = new RequestBody();
+                clientRequest.setRoute("/company");
+                clientRequest.setAction("UPDATE");
+                Company company = new Company();
+                company.setTIN(Integer.valueOf(TIN.getText()));
+                company.setName(name.getText());
                 company.setEmail(email.getText());
                 company.setType(type.getText());
-            company.setPhone(Integer.valueOf(phone.getText()));
+                company.setPhone(Integer.valueOf(phone.getText()));
 
 
-            company.setDescription(description.getText());
-            clientRequest.setData(company);
-            ObjectMapper objectMapper = new ObjectMapper();
+                company.setDescription(description.getText());
+                clientRequest.setData(company);
+                ObjectMapper objectMapper = new ObjectMapper();
                 try {
                     json = objectMapper.writeValueAsString(clientRequest);
                 } catch (JsonProcessingException ex) {
                     ex.printStackTrace();
                 }
-                json = json.replace("tin", "TIN");
                 System.out.println(json);
                 ResponseBody responseBody = null;
                 try {
                     responseBody = connect.connectToServer(clientRequest);
 
-                    success.setText("Created company Successfully");
+                    if(responseBody.getStatus() == "201"){
+                        System.out.println("Created Company");
+                        success.setText("Create Successfully");
+                    }
                 } catch (Exception ex) {
                     ex.printStackTrace();
                 }
@@ -163,25 +163,11 @@ public class CreateCompany extends JFrame {
             }
         });
 
-        setVisible(true);
+        setVisible(false);
 
         companyInformation = new JPanel();
         companyInformation.add(main);
 //        companyInformation.add(company
-        this.addWindowListener(new WindowAdapter() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                super.windowClosing(e);;
-                try {
-                    System.out.println("Closing dialog");
-                    Thread.sleep(0);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
-
-
-            }
-        });
     }
     public void actionPerformed(ActionEvent e) throws Exception {
         if(e.getSource() == submit) {
