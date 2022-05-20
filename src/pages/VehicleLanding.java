@@ -27,6 +27,7 @@ public class VehicleLanding extends JFrame {
 
         createButton("View Vehicles",theme,"view_vehicles",container,maximumSize);
         createButton("Add Vehicle",theme,"add_vehicle",container,maximumSize);
+        createButton("Tracking",theme,"track_vehicle",container,maximumSize);
 
 
 
