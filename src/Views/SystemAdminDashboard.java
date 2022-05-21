@@ -1,10 +1,9 @@
 package Views;
 
-import javax.swing.*;
-
 import pages.Inventory;
 import utils.Theme;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,7 +30,7 @@ public class SystemAdminDashboard extends JPanel {
         constraints.gridheight = 7; // span two rows
 
         Panel sidebar = new Panel();
-<<<<<<< HEAD
+
         showInventory = this.createButton("Inventory", null);
         showInventory.addActionListener(new ActionListener() {
             @Override
@@ -41,9 +40,9 @@ public class SystemAdminDashboard extends JPanel {
             }
         });
         sidebar.add(showInventory);
-=======
+
         sidebar.setLayout(new GridLayout(5, 1));
->>>>>>> 73d8e1dd02f25483cc26feb9adaf405cda644e4d
+
         sidebar.setBackground(new Color(31, 31, 115));
 
         Panel sidebarOpt1=new Panel();
