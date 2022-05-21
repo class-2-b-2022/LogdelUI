@@ -59,6 +59,7 @@ public class CheckLoggedInStatus {
     }
     public static void logout() throws Exception{
         try {
+
             fileWriter = new FileWriter("config.properties");
         } catch (FileNotFoundException e) {
             e.printStackTrace();

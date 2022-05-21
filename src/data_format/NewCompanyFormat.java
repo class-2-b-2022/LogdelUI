@@ -1,6 +1,5 @@
 package data_format;
 
-
 public class NewCompanyFormat {
     private int companyOwner;
     private String companyName;

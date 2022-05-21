@@ -10,21 +10,22 @@ import java.awt.event.ActionListener;
 public class Dashboard {
     JFrame frame;
     JPanel container;
-    JButton showInventory;
+    JButton showInventory, showCompany;
     Theme theme = new Theme();
     public Dashboard() {
         frame = new JFrame("Dashboard");
         frame.setBounds(300, 130, 1000, 1000);
         container = new JPanel();
        showInventory = this.createButton("Inventory", null);
-       showInventory.addActionListener(new ActionListener() {
+       showCompany = this.createButton("Company", null);
+       showCompany.addActionListener(new ActionListener() {
            @Override
            public void actionPerformed(ActionEvent e) {
-               Inventory inventory = new Inventory();
+               MainCompanyPage inventory = new MainCompanyPage();
 
            }
        });
-        container.add(showInventory);
+        container.add(showCompany);
         frame.add(container);
         frame.setVisible(true);
     }

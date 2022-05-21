@@ -42,10 +42,10 @@ public class SystemAdminDashboard extends JPanel {
         sidebar.add(showInventory);
 
         sidebar.setLayout(new GridLayout(5, 1));
-
         sidebar.setBackground(new Color(31, 31, 115));
 
         Panel sidebarOpt1=new Panel();
+        sidebar.setLayout(new GridLayout(5,1));
         sidebarOpt1.setLayout(new GridLayout(2, 1));
         Button l1=new Button("Company Management");
         l1.setFont(new Font("Arial", Font.BOLD, 15));

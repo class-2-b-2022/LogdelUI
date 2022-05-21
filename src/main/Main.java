@@ -2,6 +2,7 @@ package main;
 
 import Views.SystemAdminDashboard;
 
+import pages.Dashboard;
 import pages.Welcome;
 import utils.CheckLoggedInStatus;
 
@@ -10,11 +11,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        if(CheckLoggedInStatus.isLoggedIn()){
-            SystemAdminDashboard.mainMethod();
-        }else{
-            new Welcome();
-        }
+//        if(CheckLoggedInStatus.isLoggedIn()){
+        Dashboard dashboard = new Dashboard();
+//        }else{
+//            new Welcome();
+//        }
 
 
     }
