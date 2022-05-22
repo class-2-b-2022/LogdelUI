@@ -3,6 +3,9 @@ package pages.Reports;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import components.InventoryReport;
+import components.Table;
+import formats.RequestBody;
+import formats.ResponseBody;
 import utils.Theme;
 
 import javax.swing.*;
@@ -18,6 +21,7 @@ public class Reports extends JFrame implements ActionListener {
     JPanel heading = new JPanel();
     Theme theme = new Theme();
     JLabel title = new JLabel("REPORTS MODULE");
+    JPanel content = new JPanel();
 
     JPanel date_panel = new JPanel();
     JPanel product_panel = new JPanel();
@@ -31,6 +35,11 @@ public class Reports extends JFrame implements ActionListener {
     JLabel quantity = new JLabel("Quantity: ");
     JLabel company = new JLabel("Company: ");
 
+    JLabel date_content = new JLabel("2022-03-23");
+    JLabel product_content = new JLabel("AKARABO");
+    JLabel status_content = new JLabel("IN");
+    JLabel quantity_content = new JLabel("200");
+    JLabel company_content = new JLabel("NYIRANGARAMA");
 
     ReportManager reportManager = new ReportManager();
     List<InventoryReport> reportModels;
@@ -43,46 +52,21 @@ public class Reports extends JFrame implements ActionListener {
         }
     }
 
-//    Object [][] data = {{1, "2022-06-05","Fanta","IN","10","BRALIRWA"} ,{2, "2022-06-05","AKARABO","IN","10","NYIRANGARAMA"} ,{3, "2022-06-05","TIPI SUPA","IN","10","SULFO"} };
-
     public Reports(){
         frame.setBounds(300, 130, 700, 500);
         container.setBounds(0, 50, 700, 500);
 
-        int i=1;
-//        Object [] columns = {"Date", "Product", "Status", "Quantity","Company Name"};
-        int rows= 12;
-        int columns = 5;
-        for ( InventoryReport reportModel: reportModels) {
-            JPanel content = new JPanel();
-            JLabel date_content = new JLabel(String.valueOf(reportModel.getDate()));
-            JLabel product_content = new JLabel(String.valueOf(reportModel.getProduct()));
-            JLabel status_content = new JLabel(String.valueOf(reportModel.getStatus()));
-            JLabel quantity_content = new JLabel(String.valueOf(reportModel.getQuantity()));
-            JLabel company_content = new JLabel(String.valueOf(reportModel.getCompanyName()));
-            date_panel.add(date);
-            date_panel.add(date_content);
-            product_panel.add(product);
-            product_panel.add(product_content);
-            status_panel.add(status);
-            status_panel.add(status_content);
-            quantity_panel.add(quantity);
-            quantity_panel.add(quantity_content);
-            company_panel.add(company);
-            company_panel.add(company_content);
 
-            content.setLayout(new GridLayout(7,1));
-            content.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
-            container.add(heading);
-            content.add(date_panel);
-            content.add(product_panel);
-            content.add(status_panel);
-            content.add(quantity_panel);
-            content.add(company_panel);
-
-            container.add(content);
-            Object[][] data= null;
-        }
+        date_panel.add(date);
+        date_panel.add(date_content);
+        product_panel.add(product);
+        product_panel.add(product_content);
+        status_panel.add(status);
+        status_panel.add(status_content);
+        quantity_panel.add(quantity);
+        quantity_panel.add(quantity_content);
+        company_panel.add(company);
+        company_panel.add(company_content);
 
         title.setHorizontalAlignment(SwingConstants.CENTER);
         title.setForeground(theme.getPrimary());
@@ -94,11 +78,21 @@ public class Reports extends JFrame implements ActionListener {
         heading.setLayout(new GridLayout(1,1));
         heading.add(title);
 
+        content.setLayout(new GridLayout(7,1));
+        content.setBorder(BorderFactory.createEmptyBorder(10,10,0,10));
+        container.add(heading);
+        content.add(date_panel);
+        content.add(product_panel);
+        content.add(status_panel);
+        content.add(quantity_panel);
+        content.add(company_panel);
 
+        container.add(content);
         container.setBackground(Color.white);
         frame.add(container);
         frame.setResizable(false);
         frame.setVisible(true);
+
 
 
     }
