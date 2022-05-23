@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Logdel-UI.iml" filepath="$PROJECT_DIR$/Logdel-UI.iml" />
+      <module fileurl="file://$USER_HOME$/Downloads/jar_files_databind/jar_files_databind.iml" filepath="$USER_HOME$/Downloads/jar_files_databind/jar_files_databind.iml" />
     </modules>
   </component>
 </project>

@@ -1,6 +1,7 @@
 package pages;
 
 import formats.ProductModel;
+
 import formats.RequestBody;
 import formats.ResponseBody;
 import models.InventoryModel;
@@ -14,6 +15,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import pages.Products;
 
 public class Inventory {
     RequestBody request;
@@ -22,6 +24,7 @@ public class Inventory {
     int branchId;
 
     JFrame globalFrame;
+    
     public Inventory(int branchId) {
         this.branchId = branchId;
         globalFrame = new JFrame("Inventory Dashboard");
@@ -32,8 +35,21 @@ public class Inventory {
         createInventory.setBounds(500, 500, 200, 30);
         JButton showInventories = new JButton("Show Inventories");
         showInventories.setBounds(500, 600, 200, 30);
+        JButton productsManagement = new JButton("Products");
+        productsManagement.setBounds(500, 600, 200, 30);
+        globalFrame.add(productsManagement);
         globalFrame.add(createInventory);
         globalFrame.add(showInventories);
+        productsManagement.addActionListener(new ActionListener() {
+        	  @Override
+              public void actionPerformed(ActionEvent e) {
+                  try {
+                      Products products=new Products(branchId);
+                  } catch (Exception ex) {
+                      throw new RuntimeException(ex);
+                  }
+              }
+        });
         createInventory.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -51,7 +67,9 @@ public class Inventory {
             }
         });
         globalFrame.setVisible(true);
-        }
+}
+        
+        
         public static void showInventories() {
             JFrame frame;
             JTable inventoriesTable;

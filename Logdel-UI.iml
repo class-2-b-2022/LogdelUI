@@ -78,5 +78,6 @@
     <orderEntry type="library" name="mysql-connector-java-8.0.27" level="project" />
     <orderEntry type="library" name="spring-security-crypto-4.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="json-20220320" level="project" />
+    <orderEntry type="library" name="jar_files_databind" level="project" />
   </component>
 </module>
