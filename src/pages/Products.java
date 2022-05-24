@@ -177,7 +177,7 @@ public class Products {
 	                    ProductModel product;
 	                    ProductModel productModel = new ProductModel();
 	                  productModel.setProductName(t_name.getText());
-	                  productModel.setProductType(t_type.getSelectedText());
+	                  productModel.setProductType(t_type.getText());
 	                  productModel.setCompanyId(branchId);
 	                  productModel.setPricePerBulk(Integer.parseInt(t_price.getText()));
 
