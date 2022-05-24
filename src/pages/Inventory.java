@@ -138,4 +138,7 @@ public class Inventory implements ActionListener {
             frame.add(l_companyTIN);
             frame.add(t_companyTIN);
         }
+        public static void mainMethod(){
+        Inventory inv = new Inventory();
+        }
     }
