@@ -2,6 +2,7 @@ package Views;
 
 import components.DashboardNavbar;
 import components.DashboardSidebar;
+import handlers.InventoryHandler;
 import handlers.RoutingHandler;
 import handlers.VehicleManagementHandler;
 
@@ -64,7 +65,9 @@ public class SystemAdminDashboard extends JPanel {
 
         Panel sidebarOpt3=new Panel();
         sidebarOpt3.setLayout(new GridLayout(2, 1));
-        Button l3=new Button("Notifications");
+        Button l3=new Button("Inventory");
+        l3.setActionCommand("inventory");
+        l3.addActionListener(new InventoryHandler());
         l3.setFont(new Font("Arial", Font.BOLD, 15));
         l3.setBackground(new Color(31, 31, 115));
         l3.setForeground(Color.white);
