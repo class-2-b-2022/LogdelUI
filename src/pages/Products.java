@@ -111,7 +111,8 @@ public class Products {
 //	            }
 //	        }
 	        public static void createProducts (int branchId) throws Exception {
-	            List<ProductModel> products = (List<ProductModel>) new ProductService();
+	            
+//				List<ProductModel> products =  (List<ProductModel>) new ProductService(branchId);
 	            JButton createProduct;
 	            JLabel  l_name, l_type, l_price;
 	            JTextField  t_name,t_type,t_price;
@@ -121,11 +122,24 @@ public class Products {
 	            frame.setVisible(true);
 	            frame.setSize(600, 600);
 	            frame.setLayout(null);
-	            frame.setTitle("Create Product");
+	            frame.setTitle("Register Product");
 
-	            JLabel l_mainHeader = new JLabel("Create Product");
+	            JLabel l_mainHeader = new JLabel("Register Product");
 	            l_mainHeader.setBounds(100, 25, 120, 25);
 
+//	            l_name = new JLabel("Product Name: ");
+//	            l_name.setBounds(50, 75, 75, 25);
+//	            t_name = new JTextField();
+//	            t_name.setBounds(135, 75, 150, 25);
+//
+//				l_type = new JLabel("Product Type: ");
+//				l_type.setBounds(50, 75, 75, 25);
+//				t_type = new JTextField();
+//				t_type.setBounds(135, 150, 150, 25);
+//				l_price = new JLabel("Product Price: ");
+//				l_price.setBounds(50, 75, 75, 25);
+//				t_price = new JTextField();
+//				t_price.setBounds(135, 125, 150, 25);
 	            l_name = new JLabel("Product Name: ");
 	            l_name.setBounds(50, 75, 75, 25);
 	            t_name = new JTextField();
@@ -134,19 +148,21 @@ public class Products {
 	            l_type = new JLabel("Product Type: ");
 	            l_type.setBounds(50, 100, 75, 25);
 	            t_type = new JTextField();
-	            t_type.setBounds(135, 75, 150, 25);
-	            l_price = new JLabel("Price per bulk");
-	            l_price.setBounds(50, 100, 75, 25);
+	            t_type.setBounds(135, 100, 150, 25);
+	           
+
+	            l_price = new JLabel("Product Price: ");
+	            l_price.setBounds(50, 125, 75, 25);
 	            t_price = new JTextField();
-	            t_price.setBounds(135, 75, 150, 25);
-	            t_price.addKeyListener(new KeyAdapter() {
-	                public void keyTyped(KeyEvent e) {
-	                    char c = e.getKeyChar();
-	                    if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
-	                         e.consume();  // if it's not a number, ignore the event
-	                    }
-	                }
-	            });
+	            t_price.setBounds(135, 125, 150, 25);
+//	            t_price.addKeyListener(new KeyAdapter() 
+//	            {
+//	                public void keyTyped(KeyEvent e) {
+//	                    char c = e.getKeyChar();
+//	                    if ( ((c < '0') || (c > '9')) && (c != KeyEvent.VK_BACK_SPACE)) {
+//	                         e.consume();  // if it's not a number, ignore the event
+//	                    }
+//	                }
 	          
 	          
 
@@ -157,11 +173,12 @@ public class Products {
 	            createProduct.addActionListener(new ActionListener() {
 	                @Override
 	                public void actionPerformed(ActionEvent e) {
-	                    ProductService productService = new ProductService();
+	                    ProductService productService = new ProductService(branchId);
 	                    ProductModel product;
 	                    ProductModel productModel = new ProductModel();
 	                  productModel.setProductName(t_name.getText());
 	                  productModel.setProductType(t_type.getSelectedText());
+	                  productModel.setCompanyId(branchId);
 	                  productModel.setPricePerBulk(Integer.parseInt(t_price.getText()));
 
 	                    try {
