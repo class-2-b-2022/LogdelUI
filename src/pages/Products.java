@@ -2,39 +2,54 @@ package pages;
 
 import java.util.List;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import formats.ProductModel;
 import formats.RequestBody;
 import formats.ResponseBody;
 import services.ProductService;
 import java.awt.event.*;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
-
+import java.awt.Component;
+import java.awt.Color;
 public class Products {
 	 RequestBody request;
 	    ResponseBody response;
-	    ProductModel productModel;
+//	    ProductModel productModel;
 	    int branchId;
 
 	    JFrame globalFrame;
 	    
-	    public Products(int branchId) {
+        JTable productsTable;
+        ProductService productService = new ProductService(1);
+        DefaultTableModel defaultTableModel;
+
+        List<ProductModel> products;
+       ProductModel productModel;
+	    
+	    public Products(int branchId) throws Exception {
 	        
 	        globalFrame = new JFrame("Product Dashboard");
-	        globalFrame.setBounds(100, 100, 1000, 1000);
+	        globalFrame.setBounds(300, 130, 700, 500);
 	        globalFrame.setLayout(new FlowLayout());
 
 	        JButton createProduct = new JButton("Create Product");
 	        createProduct.setBounds(500, 500, 200, 30);
-	        JButton showProducts = new JButton("Show Products");
-	        showProducts.setBounds(500, 600, 200, 30);
+//	        JButton showProducts = new JButton("Show Products");
+//	        showProducts.setBounds(500, 600, 200, 30);
 	     
-	        globalFrame.add(createProduct);
-	        globalFrame.add(showProducts);
+//	        globalFrame.add(createProduct);
+//	        globalFrame.add(showProducts);
 	        
 	        createProduct.addActionListener(new ActionListener() {
 	        	  @Override
@@ -46,70 +61,71 @@ public class Products {
 	                  }
 	              }
 	        });
-
-//	        showInventories.addActionListener(new ActionListener() {
+//
+//	        showProducts.addActionListener(new ActionListener() {
 //	            @Override
 //	            public void actionPerformed(ActionEvent e) {
-//	                Inventory.showInventories();
+//	               try {
+//					Products.showproducts();
+//				} catch (Exception e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				}
 //	            }
 //	        });
 	        globalFrame.setVisible(true);
-	}
+//	}
 	        
 	        
-//	        public static void showInventories() {
-//	            JFrame frame;
-//	            JTable inventoriesTable;
-//	            InventoryService inventoryService = new InventoryService(1);
-//	            DefaultTableModel defaultTableModel;
-//
-//	            List<InventoryModel> inventories;
-//	            InventoryModel inventoryModel;
-//	            inventories = inventoryService.getInventory();
-//	            frame = new JFrame("Inventory");
-//	            frame.setBounds(300, 130, 700, 500);
-//	            frame.setVisible(true);
-//
-//	            Object columns[] = {"Quantity", "Product Id", "Branch Id", "status"};
-//	            defaultTableModel = new DefaultTableModel();
-//	            inventoriesTable = new JTable(defaultTableModel);
-//	            inventoriesTable.setPreferredScrollableViewportSize(new Dimension(300, 100));
-//	            inventoriesTable.setFillsViewportHeight(true);
-//	            inventoriesTable.getTableHeader().setBackground(Color.BLUE);
-//	            inventoriesTable.getTableHeader().setForeground(Color.white);
-//	            inventoriesTable.setDefaultRenderer(Object.class, new TableCellRenderer(){
-//	                private final DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
-//	                @Override
-//	                public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-//	                    Component c = DEFAULT_RENDERER.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
-//	                    if (row%2 == 0){
-//	                        c.setBackground(new Color(1, 150,200));
-//	                    }
-//	                    else {
-//	                        c.setBackground(new Color(215,215,215));
-//	                    }
-//	                    return c;
-//	                }
-//
-//	            });
-//	            ((DefaultTableCellRenderer)inventoriesTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
-//
-//	            JScrollPane inventoryTableDisplay = new JScrollPane(inventoriesTable);
-//	            inventoriesTable.getTableHeader().setPreferredSize(new Dimension(inventoriesTable.getWidth(),40));
-//	            inventoryTableDisplay.getViewport().setBackground(Color.WHITE);
-//	            inventoriesTable.setBorder(BorderFactory.createLineBorder(Color.white));
-//
-//	            frame.add(inventoryTableDisplay);
-//	            defaultTableModel.addColumn("Quantity");
-//	            defaultTableModel.addColumn("Product Name");
-//	            defaultTableModel.addColumn("Price");
-//	            defaultTableModel.addColumn("status");
-//
-//	            for (int i = 0; i < inventories.size(); i++) {
-//	                inventoryModel = (InventoryModel) inventories.get(i);
-//	                defaultTableModel.addRow(new Object[]{inventoryModel.getQuantity(), inventoryModel.getProductName(), inventoryModel.getPricePerBulk(), inventoryModel.getStatus()});
-//	            }
+//	        public static void showproducts() throws Exception {
+//	          
 //	        }
+	 
+        products =productService.getProducts();
+//        frame = new JFrame("Products");
+//        frame.setBounds(300, 130, 700, 500);
+//        frame.setVisible(true);
+
+//        Object columns[] = {"Product", "Type", "Price(Bulk)"};
+        defaultTableModel = new DefaultTableModel();
+        productsTable = new JTable(defaultTableModel);
+        productsTable.setPreferredScrollableViewportSize(new Dimension(300, 100));
+        productsTable.setFillsViewportHeight(true);
+        productsTable.getTableHeader().setBackground(Color.BLUE);
+        productsTable.getTableHeader().setForeground(Color.white);
+        productsTable.setDefaultRenderer(Object.class, new TableCellRenderer(){
+            private final DefaultTableCellRenderer DEFAULT_RENDERER =  new DefaultTableCellRenderer();
+            @Override
+            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+                Component c = DEFAULT_RENDERER.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+                if (row%2 == 0){
+                    c.setBackground(new Color(1, 150,200));
+                }
+                else {
+                    c.setBackground(new Color(215,215,215));
+                }
+                return c;
+            }
+
+        });
+        ((DefaultTableCellRenderer)productsTable.getTableHeader().getDefaultRenderer()).setHorizontalAlignment(JLabel.CENTER);
+
+        JScrollPane productsTableDisplay = new JScrollPane(productsTable);
+        productsTable.getTableHeader().setPreferredSize(new Dimension(productsTable.getWidth(),40));
+        productsTableDisplay.getViewport().setBackground(Color.WHITE);
+        productsTable.setBorder(BorderFactory.createLineBorder(Color.white));
+
+       globalFrame.add(productsTableDisplay);
+        defaultTableModel.addColumn("Product");
+        defaultTableModel.addColumn("Type");
+        defaultTableModel.addColumn("Price/(Bulk)");
+       
+
+        for (int i = 0; i < products.size(); i++) {
+            productModel = (ProductModel) products.get(i);
+            defaultTableModel.addRow(new Object[]{productModel.getProductName(), productModel.getProductType(),productModel.getPricePerBulk()});
+        }
+	    }
 	        public static void createProducts (int branchId) throws Exception {
 	            
 //				List<ProductModel> products =  (List<ProductModel>) new ProductService(branchId);
@@ -127,19 +143,6 @@ public class Products {
 	            JLabel l_mainHeader = new JLabel("Register Product");
 	            l_mainHeader.setBounds(100, 25, 120, 25);
 
-//	            l_name = new JLabel("Product Name: ");
-//	            l_name.setBounds(50, 75, 75, 25);
-//	            t_name = new JTextField();
-//	            t_name.setBounds(135, 75, 150, 25);
-//
-//				l_type = new JLabel("Product Type: ");
-//				l_type.setBounds(50, 75, 75, 25);
-//				t_type = new JTextField();
-//				t_type.setBounds(135, 150, 150, 25);
-//				l_price = new JLabel("Product Price: ");
-//				l_price.setBounds(50, 75, 75, 25);
-//				t_price = new JTextField();
-//				t_price.setBounds(135, 125, 150, 25);
 	            l_name = new JLabel("Product Name: ");
 	            l_name.setBounds(50, 75, 75, 25);
 	            t_name = new JTextField();
