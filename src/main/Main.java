@@ -11,11 +11,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        if(CheckLoggedInStatus.isLoggedIn()){
+        if(CheckLoggedInStatus.isLoggedIn()){
         SystemAdminDashboard.DashboardMain();
-//        }else{
-//            new Welcome();
-//        }
+        }else{
+            new Welcome();
+        }
 
     }
 }
