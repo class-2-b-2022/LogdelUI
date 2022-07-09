@@ -10,12 +10,11 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        if(CheckLoggedInStatus.isLoggedIn()){
-            SystemAdminDashboard.mainMethod();
-        }else{
+//        if(CheckLoggedInStatus.isLoggedIn()){
+//            SystemAdminDashboard.mainMethod();
+//        }else{
             new Welcome();
-        }
-
+//        }
 
     }
 }

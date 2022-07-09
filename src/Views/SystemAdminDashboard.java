@@ -2,9 +2,11 @@ package Views;
 
 import components.DashboardNavbar;
 import components.DashboardSidebar;
+import handlers.CompanyHandler;
 import handlers.InventoryHandler;
 import handlers.RoutingHandler;
 import handlers.VehicleManagementHandler;
+import pages.MainCompanyPage;
 
 import javax.swing.*;
 import java.awt.*;
@@ -36,6 +38,7 @@ public class SystemAdminDashboard extends JPanel {
         Panel sidebarOpt1=new Panel();
         sidebarOpt1.setLayout(new GridLayout(2, 1));
         Button l1=new Button("Company Management");
+        l1.setActionCommand("company");
         l1.setFont(new Font("Arial", Font.BOLD, 15));
         l1.setBackground(new Color(31, 31, 115));
         l1.setForeground(Color.white);
@@ -46,6 +49,7 @@ public class SystemAdminDashboard extends JPanel {
         sidebarOpt1.add(label);
         sidebarOpt1.add(l1);
         sidebar.add(sidebarOpt1);
+        l1.addActionListener(new CompanyHandler());
 
         Panel sidebarOpt2=new Panel();
         sidebarOpt2.setLayout(new GridLayout(2, 1));
