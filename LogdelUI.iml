@@ -7,8 +7,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
     <orderEntry type="library" name="lib" level="project" />
     <orderEntry type="library" name="libs" level="project" />
     <orderEntry type="library" name="gson-2.8.6 (1)" level="project" />
+=======
+    <orderEntry type="library" name="json-20211205" level="application" />
+    <orderEntry type="library" name="jackson-core-2.13.1" level="application" />
+    <orderEntry type="library" name="jackson-databind-2.13.1" level="application" />
+    <orderEntry type="library" name="lib" level="project" />
+    <orderEntry type="library" name="jackson-annotations-2.13.1" level="application" />
+>>>>>>> bac275b279dff0acbf86b564877bce5ef7ac7639
   </component>
 </module>

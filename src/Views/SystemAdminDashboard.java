@@ -1,26 +1,16 @@
 package Views;
 
-import pages.Inventory;
-import utils.Theme;
+import components.DashboardNavbar;
+import components.DashboardSidebar;
+import handlers.InventoryHandler;
+import handlers.RoutingHandler;
+import handlers.VehicleManagementHandler;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class SystemAdminDashboard extends JPanel {
     GridBagConstraints constraints = new GridBagConstraints();
-    Panel navbar = new Panel();
-    JButton showInventory;
-    Theme theme = new Theme();
-    public JButton createButton(String text, Color color){
-        JButton button = new JButton(text);
-        button.setForeground(color!=null ? color: Color.white);
-        button.setBorder(BorderFactory.createEmptyBorder(5, 20, 10, 20));
-        button.setBackground(theme.getPrimary());
-        button.setFocusable(false);
-        return button;
-    }
     public SystemAdminDashboard() {
         setLayout(new GridBagLayout());
         constraints.weightx = 1.0;
@@ -31,21 +21,19 @@ public class SystemAdminDashboard extends JPanel {
 
         Panel sidebar = new Panel();
 
-        showInventory = this.createButton("Inventory", null);
-        showInventory.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Inventory inventory = new Inventory();
-
-            }
-        });
-        sidebar.add(showInventory);
-
+//        showInventory = this.createButton("Inventory", null);
+//        showInventory.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                Inventory inventory = new Inventory();
+//
+//            }
+//        });
+//        sidebar.add(showInventory);
         sidebar.setLayout(new GridLayout(5, 1));
         sidebar.setBackground(new Color(31, 31, 115));
 
         Panel sidebarOpt1=new Panel();
-        sidebar.setLayout(new GridLayout(5,1));
         sidebarOpt1.setLayout(new GridLayout(2, 1));
         Button l1=new Button("Company Management");
         l1.setFont(new Font("Arial", Font.BOLD, 15));
@@ -65,6 +53,9 @@ public class SystemAdminDashboard extends JPanel {
         l2.setFont(new Font("Arial", Font.BOLD, 15));
         l2.setBackground(new Color(31, 31, 115));
         l2.setForeground(Color.white);
+        l2.setActionCommand("delivery");
+        l2.addActionListener(new RoutingHandler());
+
         JLabel la2=new JLabel();
 //        la2.setLayout(new FlowLayout(FlowLayout.CENTER));
         la2.setIcon(new ImageIcon("assets\\truck.png"));// your image here
@@ -74,7 +65,9 @@ public class SystemAdminDashboard extends JPanel {
 
         Panel sidebarOpt3=new Panel();
         sidebarOpt3.setLayout(new GridLayout(2, 1));
-        Button l3=new Button("Notifications");
+        Button l3=new Button("Inventory");
+        l3.setActionCommand("inventory");
+        l3.addActionListener(new InventoryHandler());
         l3.setFont(new Font("Arial", Font.BOLD, 15));
         l3.setBackground(new Color(31, 31, 115));
         l3.setForeground(Color.white);
@@ -112,49 +105,33 @@ public class SystemAdminDashboard extends JPanel {
         sidebar.add(sidebarOpt5);
 
         addGB(sidebar,   x = 0, y = 0, 0.1);
+        addGB(new DashboardSidebar().returnSidebar(),   x = 0, y = 0, 0.1);
         constraints.gridheight = 1; // set it back
 
-        Label appTitle = new Label();
-        appTitle.setText(" LODGEL APP");
-        appTitle.setForeground(Color.white);
-        appTitle.setBounds(0, 0, 300, 40);
-        appTitle.setFont(new Font("Arial", Font.BOLD, 18));
-
-        navbar.setBackground(new Color(000033));
-        navbar.setLayout(new GridLayout(1, 2));
-        navbar.add(appTitle);
-
-        JLabel la6=new JLabel();
-        Panel profile = new Panel();
-        profile.setLayout(new FlowLayout(FlowLayout.RIGHT));
-        la6.setIcon(new ImageIcon("assets\\profile.png"));// your image here
-        profile.add(la6);
-        navbar.add(profile);
-
-        addGB(navbar,   x = 1, y = 0, 0.8);
+        addGB(new DashboardNavbar().returnNavbar("LOGDEL Admin"),   x = 1, y = 0, 0.8);
 
         Panel contentHolder = new Panel();
-        contentHolder.setBackground(new Color(0x303057));
+        contentHolder.setBackground(Color.WHITE);
         addGB(contentHolder, x=1, y=1, 0.8);
 
         Panel contentHolder1 = new Panel();
-        contentHolder1.setBackground(new Color(0x303057));
+        contentHolder1.setBackground(Color.WHITE);
         addGB(contentHolder1, x=1, y=2, 0.8);
 
         Panel contentHolder2 = new Panel();
-        contentHolder2.setBackground(new Color(0x303057));
+        contentHolder2.setBackground(Color.WHITE);
         addGB(contentHolder2, x=1, y=3, 0.8);
 
         Panel contentHolder3 = new Panel();
-        contentHolder3.setBackground(new Color(0x303057));
+        contentHolder3.setBackground(Color.WHITE);
         addGB(contentHolder3, x=1, y=4, 0.8);
 
         Panel contentHolder4 = new Panel();
-        contentHolder4.setBackground(new Color(0x303057));
+        contentHolder4.setBackground(Color.WHITE);
         addGB(contentHolder4, x=1, y=5, 0.8);
 
         Panel contentHolder5 = new Panel();
-        contentHolder5.setBackground(new Color(0x303057));
+        contentHolder5.setBackground(Color.WHITE);
         addGB(contentHolder5, x=1, y=6, 0.8);
 
 //        constraints.gridwidth = 2; // span two columns
@@ -163,14 +140,14 @@ public class SystemAdminDashboard extends JPanel {
         constraints.gridheight = 1;
     }
 
-    public void addGB(Component component, int x, int y,double weightx) {
+    void addGB(Component component, int x, int y,double weightx) {
         constraints.weightx = weightx;
         constraints.gridx = x;
         constraints.gridy = y;
         add(component, constraints);
     }
 
-    public static void DashboardMain() {
+    public static void main(String[] args) {
         JFrame frame = new JFrame("System Admin | Dashboard");
         frame.setIconImage((new ImageIcon("assets\\logo1.png")).getImage());
         frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
